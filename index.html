@@ -39,7 +39,8 @@
     body { margin: 0; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.75; color: var(--color-text); background: var(--color-bg); }
     a { text-decoration: none; color: var(--color-primary); }
     a:hover { color: var(--color-primary-hover); }
-    img, svg { display: block; max-width: 100%; height: auto; }
+    img, svg, iframe { display: block; max-width: 100%; }
+    iframe { width: 100%; border: 0; }
     .site-nav { background: rgba(245,243,238,.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-divider); }
     [data-theme="dark"] .site-nav { background: rgba(23,22,20,.9); }
     .section-pad { padding: clamp(var(--space-12), 7vw, var(--space-20)) 0; }
@@ -59,33 +60,33 @@
     .btn-main:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); color: #fff; }
     .btn-outline-soft { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); padding: .85rem 1.2rem; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 700; }
     .accent-strip { border-left: 4px solid var(--color-secondary); padding-left: var(--space-4); }
-    .icon-chip { width: 3rem; height: 3rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 1rem; background: var(--color-secondary-soft); color: var(--color-secondary); }
-    .hk-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.25rem; }
-    .cluster { display: grid; gap: 1rem; }
     .tag-list { display: flex; flex-wrap: wrap; gap: .6rem; }
     .tag-pill { padding: .45rem .8rem; border-radius: var(--radius-full); background: var(--color-surface-tint); border: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); }
     .course-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     .join-banner { padding: var(--space-8); border-radius: var(--radius-xl); background: linear-gradient(135deg, var(--color-primary), #2a7377); color: #fff; box-shadow: var(--shadow-md); }
-    .milestone-wrap { position: relative; display: grid; gap: 1rem; }
-    .milestone-item { position: relative; padding-left: 2rem; }
-    .milestone-item::before { content: ''; position: absolute; left: .55rem; top: 0; bottom: -1rem; width: 2px; background: var(--color-divider); }
-    .milestone-item:last-child::before { bottom: 0; }
-    .milestone-dot { position: absolute; left: 0; top: 1.2rem; width: 18px; height: 18px; border-radius: 50%; background: var(--color-secondary); border: 4px solid var(--color-bg); box-shadow: 0 0 0 1px var(--color-border); }
-    .milestone-card { overflow: hidden; }
-    .milestone-media { aspect-ratio: 16/8; background: linear-gradient(135deg, rgba(20,92,99,.18), rgba(184,107,47,.15)); display:flex; align-items:end; padding:1rem; color:#fff; font-weight:700; letter-spacing:.02em; }
+    .milestone-carousel { position: relative; }
+    .milestone-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: .75rem; -ms-overflow-style: none; scrollbar-width: none; }
+    .milestone-track::-webkit-scrollbar { display: none; }
+    .milestone-slide { flex: 0 0 88%; scroll-snap-align: start; }
+    .milestone-card { overflow: hidden; height: 100%; }
     .milestone-body { padding: var(--space-5); }
+    .milestone-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-surface-2); color: var(--color-text); display: inline-flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+    .milestone-nav:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .milestone-prev { left: -10px; }
+    .milestone-next { right: -10px; }
     .theme-toggle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-surface-2); color: var(--color-text); display: inline-flex; align-items: center; justify-content: center; }
     .footer { padding: var(--space-8) 0; background: var(--color-surface); border-top: 1px solid var(--color-divider); }
     .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
     .skip-link:focus { left: 1rem; top: 1rem; width: auto; height: auto; padding: .75rem 1rem; background: var(--color-primary); color: white; border-radius: .75rem; z-index: 9999; }
-    @media (max-width: 991.98px) { .hk-layout { grid-template-columns: 1fr; } .course-steps { grid-template-columns: repeat(2, 1fr); } .hero-title { max-width: none; } }
-    @media (max-width: 575.98px) { .course-steps, .hero-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 768px) { .milestone-slide { flex-basis: 48%; } }
+    @media (min-width: 1200px) { .milestone-slide { flex-basis: 31%; } }
+    @media (max-width: 991.98px) { .hero-title { max-width: none; } .course-steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 575.98px) { .hero-grid, .course-steps { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">跳至主要內容</a>
 
-  <!-- 導覽列 -->
   <nav class="navbar navbar-expand-lg fixed-top site-nav" aria-label="主選單">
     <div class="container py-2">
       <a class="navbar-brand d-flex align-items-center gap-3 fw-bold" href="#top" style="color:var(--color-text)">
@@ -100,7 +101,6 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#overview">計劃概覽</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">服務內容</a></li>
           <li class="nav-item"><a class="nav-link" href="#course">培訓課程</a></li>
           <li class="nav-item"><a class="nav-link" href="#updates">最新消息</a></li>
           <li class="nav-item"><a class="nav-link" href="#milestones">里程碑</a></li>
@@ -112,42 +112,65 @@
     </div>
   </nav>
 
-  <!-- Hero 主區 -->
   <header class="hero" id="top">
     <div class="container">
-      <div class="hk-layout align-items-start">
-        <div class="hero-panel">
-          <span class="eyebrow mb-3">回憶引導在香港</span>
-          <h1 class="hero-title mb-4">透過回憶引導，把理解、陪伴與社區支援帶到長者身邊。</h1>
-          <p class="muted mb-4">香港正面對高齡化，部分長者同時面對認知障礙、抑鬱及孤獨等狀況，因此本計劃希望在社區推動回憶引導活動，改善長者的認知、生活質素與社交連結，並探究這些介入對長者及照顧者雙方帶來的改變。</p>
-          <div class="d-flex flex-wrap gap-3 mb-4">
-            <a class="btn btn-main" href="#community">立即參與</a>
-          </div>
-          <div class="tag-list">
-            <span class="tag-pill">高齡化社區</span>
-            <span class="tag-pill">認知健康</span>
-            <span class="tag-pill">回憶引導</span>
-            <span class="tag-pill">照顧者支援</span>
-            <span class="tag-pill">VR 回憶活動</span>
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-6">
+          <div class="hero-panel h-100">
+            <span class="eyebrow mb-3">回憶引導在香港</span>
+            <h1 class="fs-1 mb-4">透過回憶引導，把理解、陪伴與社區支援帶到長者身邊。</h1>
+            <p class="muted mb-4">香港正面對高齡化，部分長者同時面對認知障礙、抑鬱及孤獨等狀況，因此本計劃希望在社區推動回憶引導活動，改善長者的認知、生活質素與社交連結，並探究這些介入對長者及照顧者雙方帶來的改變。</p>
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <a class="btn btn-main" href="#community">立即參與</a>
+              <a class="btn btn-outline-soft" href="#milestones">了解服務</a>
+            </div>
+            <div class="tag-list">
+              <span class="tag-pill">高齡化社區</span>
+              <span class="tag-pill">認知健康</span>
+              <span class="tag-pill">回憶引導</span>
+              <span class="tag-pill">照顧者支援</span>
+              <span class="tag-pill">VR 回憶活動</span>
+            </div>
           </div>
         </div>
-        <div class="cluster">
-          <div class="hero-grid">
-            <div class="metric-card"><span class="muted d-block mb-1">重點需要</span><strong>認知與情緒</strong><span class="muted">關注認知障礙、抑鬱與孤獨</span></div>
-            <div class="metric-card"><span class="muted d-block mb-1">核心方法</span><strong>回憶引導</strong><span class="muted">以記憶、故事與互動建立連結</span></div>
-            <div class="metric-card"><span class="muted d-block mb-1">服務場景</span><strong>中心與院舍</strong><span class="muted">到點提供回憶活動服務</span></div>
-            <div class="metric-card"><span class="muted d-block mb-1">即將開展</span><strong>回憶引導培訓課程</strong><span class="muted">對象為長者或照顧者</span></div>
-          </div>
-          <div class="content-card p-4">
-            <p class="mb-0 accent-strip">計劃希望透過訓練與陪伴，培育一群懂得傾聽、願意陪伴的回憶引導員，讓回憶的力量在社區中生根發芽。</p>
+
+        <div class="col-lg-6">
+          <div class="cluster">
+            <div class="content-card p-4">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-5">
+                  <img src="images/blood%20flow.png" class="img-fluid rounded-4" alt="研究圖示">
+                </div>
+                <div class="col-md-7">
+                  <p class="mb-0 accent-strip">研究發現，長者進行懷舊與回憶對談時，大腦前額葉皮質血流量高於一般日常對話，流入腦中血液量<strong class="text-danger mx-1">增加高達80倍</strong>！這可大幅協助長者增加互動、提升情緒與認知刺激。</p>
+                </div>
+              </div>
+            </div>
+<p></p>
+            <div class="hero-grid">
+              <div class="metric-card"><span class="muted d-block mb-1">重點需要</span><strong>認知與情緒</strong><span class="muted">關注認知障礙、抑鬱與孤獨</span></div>
+              <div class="metric-card"><span class="muted d-block mb-1">核心方法</span><strong>回憶引導</strong><span class="muted">以記憶、故事與互動建立連結</span></div>
+              <div class="metric-card"><span class="muted d-block mb-1">服務場景</span><strong>中心與院舍</strong><span class="muted">可到點提供回憶引導活動</span></div>
+              <div class="metric-card"><span class="muted d-block mb-1">培訓課程</span><strong>回憶引導培訓</strong><span class="muted">培訓長者或照顧者成為引導員</span></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+      <p></p>
+      <div class="container">
+          <div class="row g-4 align-items-start">
+              <div class="col-lg-12">
+                  <div class="content-card p-4">
+          <p class="mb-0 accent-strip">計劃希望透過訓練與陪伴，培育一群懂得傾聽、願意陪伴的回憶引導員，讓回憶的力量在社區中生根發芽。</p>
+                  </div>
+              </div>
+          </div>
+      </div>
   </header>
 
+    
   <main id="main-content">
-    <!-- 計劃概覽 -->
     <section class="section-pad" id="overview">
       <div class="container">
         <div class="row g-4 align-items-start">
@@ -159,7 +182,7 @@
           <div class="col-lg-8">
             <div class="row g-3">
               <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們關注的情況</h3><p class="muted mb-0">認知障礙、抑鬱、孤獨感及社交退縮，都是不少長者與照顧者正在面對的挑戰。</p></article></div>
-              <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們的做法</h3><p class="muted mb-0">透過回憶活動、互動體驗、回憶引導培訓與服務到點支援，建立可持續的社區參與模式。</p></article></div>
+              <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們的做法</h3><p class="muted mb-0">透過回憶活動、互動體驗、回憶引導培訓與服務，建立可持續的社區參與模式。</p></article></div>
               <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們希望看到</h3><p class="muted mb-0">長者在認知能力、生活質素及社交互動方面有正面改變，照顧者亦在參與過程中獲得成長與支持。</p></article></div>
               <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們探究的方向</h3><p class="muted mb-0">了解回憶引導對長者與帶領者雙方在認知、社交及生活感受上的影響，為未來社區服務提供更多實證基礎。</p></article></div>
             </div>
@@ -168,64 +191,27 @@
       </div>
     </section>
 
-    <!-- 服務內容 -->
-    <section class="section-pad" id="services" style="background:var(--color-surface)">
+     <section class="section-pad" id="course">
       <div class="container">
         <div class="row g-4 align-items-start">
-          <div class="col-lg-4">
-            <span class="eyebrow mb-3">服務內容</span>
-            <h2 class="section-title mb-3">回憶引導員 專業培訓課程</h2>
-              <a href="images/map.jpeg" target="_blank" rel="noopener noreferrer">
-                  <img src="images/map.jpeg" class="img-fluid rounded-4 mb-3" alt="回憶引導培訓流程圖">
-              </a>
-            <p class="muted mb-0">完整的培訓機制，招募、培訓、推廣一站式模組架構。</p>
-          </div>
-          <div class="col-lg-8">
-            <div class="row g-3">
-              <div class="col-md-6"><article class="service-card"><h3 class="h4 mb-3">回憶引導培訓</h3><p class="muted mb-0">訓練長者或照顧者成為回憶引導員，培養懂得傾聽、陪伴和帶領活動的人才隊伍。</p></article></div>
-              <div class="col-md-6"><article class="service-card"><h3 class="h4 mb-3">社區回憶引導活動</h3><p class="muted mb-0">在社區、中心或院舍舉辦回憶活動，透過故事、圖片、物件、生活經驗或主題互動，促進長者參與與交流。</p></article></div>
-              <div class="col-md-6"><article class="service-card"><h3 class="h4 mb-3">微型工作機會</h3><p class="muted mb-0">提供微工作機會，讓參與者在活中累積經驗，並增強社交連結。</p></article></div>
-              <div class="col-md-6"><article class="service-card"><h3 class="h4 mb-3">機構到點合作</h3><p class="muted mb-0">歡迎長者中心及院舍合作，由計劃派出回憶引導員到機構提供服務，讓長者受惠，同時擴大計劃的社區影響力，達致雙贏。</p></article></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 培訓課程 -->
-    <section class="section-pad" id="course">
-      <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-5">
+          <div class="col-lg-6">
             <span class="eyebrow mb-3">培訓課程</span>
             <h2 class="section-title mb-3">回憶引導培訓課程</h2>
-            <p class="muted mb-3">回憶引導培訓課程對象為長者或照顧者。課程將幫助參加者理解回憶引導的理念、帶領技巧及實務應用，並鼓勵他們在社區中成為願意傾聽、願意陪伴的回憶引導員。</p>
-            <div class="content-card p-4">
-              <h3 class="h5 mb-3">課程亮點</h3>
-              <ul class="mb-0 ps-3 muted">
-                <li>對象聚焦長者及照顧者。</li>
-                <li>培養回憶引導員，擴大社區支援網絡。</li>
-                <li>結合理論、活動設計及帶領實踐。</li>
-                <li>可延伸至中心、院舍及社區服務場景。</li>
-              </ul>
-            </div>
+            <p class="muted mb-0">回憶引導培訓課程對象為長者或照顧者。課程將幫助參加者理解回憶引導的理念、帶領技巧及實務應用，並鼓勵他們在社區中成為願意傾聽、願意陪伴的回憶引導員。</p><p></p>
+              <img src="images/map.jpeg" class="figure-img img-fluid rounded">
           </div>
-          <div class="col-lg-7">
-            <div class="course-steps mb-3">
-              <div class="course-box"><h3 class="h5 mb-2">Welcome</h3><p class="muted mb-0">建立安全感與信任關係，讓參加者願意投入。</p></div>
-              <div class="course-box"><h3 class="h5 mb-2">Warm-up</h3><p class="muted mb-0">以簡單互動打開對話，慢慢進入主題。</p></div>
-              <div class="course-box"><h3 class="h5 mb-2">Work-out</h3><p class="muted mb-0">進行核心回憶活動與分享，促進交流。</p></div>
-              <div class="course-box"><h3 class="h5 mb-2">Wrap-up</h3><p class="muted mb-0">整理感受與收穫，讓參與經驗更完整。</p></div>
-            </div>
-            <div class="content-card p-4">
-              <p class="mb-0">教材多次提及 4W 流程與不同活動媒介，因此網站保留這部分作為課程介紹，但定位清楚為整體計劃中的其中一環，而非唯一主體。</p>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">1.線上課程</h3><p class="muted mb-3">完成必要的線上課程以建立懷舊與回憶引導的基礎知識，涵蓋引導原則、5大核心素養與能力 (5 RECs) 及 4Ws 活動設計方法。</p></article></div>
+              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">2.實體培訓</h3><p class="muted mb-3">參加為期兩天的實體培訓課程，透過角色扮演與模擬懷舊情境，獲得實踐經驗與有效溝通技巧。</p></article></div>
+              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">3.取得證書</h3><p class="muted mb-3">獲得由新加坡社科大學發出的「回憶引導員證書」。</p></article></div>
+              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">4.微型工作機會</h3><p class="muted mb-3">提供微工作機會，讓參與者在活中累積經驗，並增強社交連結。</p></article></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- 最新消息 -->
+    </section>     
+  
     <section class="section-pad" id="updates" style="background:var(--color-surface)">
       <div class="container">
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
@@ -237,83 +223,86 @@
           <a class="btn btn-outline-soft" href="#contact">查詢合作</a>
         </div>
         <div class="row g-3">
-          <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">8 月開展</span><h3 class="h4 mb-3">回憶引導培訓課程</h3><p class="muted mb-0">面向長者或照顧者，培養回憶引導員，讓參加者成為社區陪伴與帶領的一分子。</p></article></div>
+          <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">將於2026年9月開展</span><h3 class="h4 mb-3">回憶引導培訓課程</h3><p class="muted mb-0">面向長者或照顧者，培養回憶引導員，讓參加者成為社區陪伴與帶領的一分子。</p></article></div>
           <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">現正洽談</span><h3 class="h4 mb-3">中心與院舍合作服務</h3><p class="muted mb-0">歡迎長者中心、院舍及社區單位與我們合作，由計劃安排回憶引導員到點提供服務。</p></article></div>
           <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">特色服務</span><h3 class="h4 mb-3">VR 回憶引導活動</h3><p class="muted mb-0">以 VR 體驗結合回憶引導，把更具沉浸感的互動帶到中心或院舍，讓長者在熟悉感與新鮮感之間打開交流空間。</p></article></div>
         </div>
       </div>
     </section>
 
-    <!-- 里程碑 -->
     <section class="section-pad" id="milestones">
       <div class="container">
         <div class="row g-4 align-items-start">
           <div class="col-lg-4">
             <span class="eyebrow mb-3">里程碑</span>
-            <h2 class="section-title mb-3">以圖像化里程碑展示計劃歷程</h2>
-            <p class="muted mb-0">你提到希望像臺灣版本一樣有里程碑，但加入圖片。這個版本已改用「時間線＋圖片卡片」形式，每個節點都可放活動照片、海報或主題圖片，視覺上更豐富，也更容易展示計劃至今的流程。</p>
+            <h2 class="section-title mb-3">計劃歷程</h2>
+              <article class="news-card"><p class="muted mb-0">2025年至今</p><br><p>已舉辦回憶引導員培訓課程:2場<br>完成培訓的義工: 60+<br>受惠的長者: 240+<br>VR回憶引導活動受惠的長者: 20+</p></article>
           </div>
           <div class="col-lg-8">
-            <div class="milestone-wrap">
-              <div class="milestone-item">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <article class="milestone-card">
-                     <div class="ratio ratio-16x9 rounded-4 overflow-hidden mb-3">
-                         <iframe
-                                 src="https://www.youtube.com/embed/Pxv4ODuBUkw"
-                                 title="第一期回憶引導活動影片"
-                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                 allowfullscreen>
-                         </iframe>
-                    </div> 
-                  <div class="milestone-body">
-                    <div class="small muted mb-2">2025年9月2,25日</div>
-                    <h3 class="h4 mb-3">第一期回憶引導員培訓課程</h3>
-                  </div>
-                </article>
-              </div>
-              <div class="milestone-item">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <article class="milestone-card">
-                  <div class="milestone-body">
-                        <img src="images/1st_cohort_services.jpg" class="img-fluid rounded-4 mb-3" alt="第一期回憶引導員培訓課程">
+            <div class="milestone-carousel">
+              <button class="milestone-nav milestone-prev" type="button" aria-label="上一個里程碑">&#8249;</button>
+              <button class="milestone-nav milestone-next" type="button" aria-label="下一個里程碑">&#8250;</button>
+              <div class="milestone-track" id="milestoneTrack">
+                <div class="milestone-slide">
+                  <article class="milestone-card h-100">
+                    <div class="ratio ratio-16x9">
+                      <iframe src="https://www.youtube.com/embed/Pxv4ODuBUkw" title="第一期回憶引導員培訓課程影片" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="milestone-body">
+                      <div class="small muted mb-2">2025年9月24及25日</div>
+                      <h3 class="h5 mb-2">第一期回憶引導員培訓課程</h3>
+                      <p class="muted mb-0">第一期培訓順利完成，為社區建立首批回憶引導員，打下服務推展的基礎。</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="milestone-slide">
+                  <article class="milestone-card h-100">
+                    <a href="images/1st_cohort_services.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="images/1st_cohort_services.jpg" data-alt="第一期回憶引導員社區服務">
+                      <img src="images/1st_cohort_services.jpg" class="w-100" alt="第一期回憶引導員社區服務" style="aspect-ratio: 16/10; object-fit: cover; border-bottom: 1px solid var(--color-border); cursor: zoom-in;">
+                    </a>
+                    <div class="milestone-body">
                       <div class="small muted mb-2">2025年10月至2026年2月</div>
-                    <h3 class="h4 mb-3">第一期回憶引導員社區服務</h3>
-                    <p class="muted mb-0">31位完成培訓的回憶引導員，於7個服務單位，服務超過124位長者。</p>
-                  </div>
-                </article>
-              </div>
-                <div class="milestone-item">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <article class="milestone-card">
-                  <div class="milestone-body">
-                        <img src="images/2nd_cohort.jpg" class="img-fluid rounded-4 mb-3" alt="第二期回憶引導員培訓課程">
+                      <h3 class="h5 mb-2">第一期回憶引導員社區服務</h3>
+                      <p class="muted mb-0">31 位完成培訓的回憶引導員，於 7 個服務單位服務超過 124 位長者，讓回憶引導走進社區。</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="milestone-slide">
+                  <article class="milestone-card h-100">
+                    <a href="images/2nd_cohort.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="images/VR.jpg" data-alt="VR回憶引導活動開展">
+                      <img src="images/VR.jpg" class="w-100" alt="VR回憶引導活動開展" style="aspect-ratio: 16/10; object-fit: cover; border-bottom: 1px solid var(--color-border); cursor: zoom-in;">
+                    </a>
+                    <div class="milestone-body">
+                      <div class="small muted mb-2">2025年12月</div>
+                      <h3 class="h5 mb-2">VR回憶引導活動開展</h3>
+                      <p class="muted mb-0">VR 回憶引導活動已開始在社區、中心及院舍推行，透過沉浸式體驗喚起長者的生活記憶，促進對話、參與感與社交互動。</p>
+                    </div>
+                  </article>
+                </div>
+                   <div class="milestone-slide">
+                  <article class="milestone-card h-100">
+                    <a href="images/2nd_cohort.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="images/2nd_cohort.jpg" data-alt="第二期回憶引導員培訓課程">
+                      <img src="images/2nd_cohort.jpg" class="w-100" alt="第二期回憶引導員培訓課程" style="aspect-ratio: 16/10; object-fit: cover; border-bottom: 1px solid var(--color-border); cursor: zoom-in;">
+                    </a>
+                    <div class="milestone-body">
                       <div class="small muted mb-2">2026年3月9及11日</div>
-                    <h3 class="h4 mb-3">第二期回憶引導員培訓課程</h3>
-                  </div>
-                </article>
-              </div>
-              <div class="milestone-item">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <article class="milestone-card">
-                  <div class="milestone-media">培訓與能力建立</div>
-                  <div class="milestone-body">
-                    <div class="small muted mb-2">階段 03</div>
-                    <h3 class="h4 mb-3">培育回憶引導員</h3>
-                    <p class="muted mb-0">可放培訓課程、實習帶領、學員互動或證書頒發照片，展示計劃如何建立社區人才。</p>
-                  </div>
-                </article>
-              </div>
-              <div class="milestone-item">
-                <span class="milestone-dot" aria-hidden="true"></span>
-                <article class="milestone-card">
-                  <div class="milestone-media">VR 回憶服務與機構合作</div>
-                  <div class="milestone-body">
-                    <div class="small muted mb-2">階段 04</div>
-                    <h3 class="h4 mb-3">擴展服務到中心與院舍</h3>
-                    <p class="muted mb-0">可放 VR 活動、院舍服務、合作中心探訪及現場活動照片，呈現計劃如何持續擴展與深化。</p>
-                  </div>
-                </article>
+                      <h3 class="h5 mb-2">第二期回憶引導員培訓課程</h3>
+                      <p class="muted mb-0">第二期課程正式展開，持續培育更多長者及照顧者參與回憶引導服務。</p>
+                    </div>
+                  </article>
+                </div>
+                  <div class="milestone-slide">
+                  <article class="milestone-card h-100">
+                    <div class="ratio ratio-16x9">
+                      <iframe src="https://www.youtube.com/embed/wgmwiF-iFIs?si=2DFc-KHM1zkIj3W3" title="凝聚香港 – VR科技結合回憶引導活動，協助有認知障礙長者重拾回憶，提升認知功能與社交聯結。" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="milestone-body">
+                      <div class="small muted mb-2">2026年3月31日</div>
+                      <h3 class="h5 mb-2">VR 回憶引導活動接受香港電臺邀請拍攝節目</h3>
+                      <p class="muted mb-0">獲香港電臺邀請合作拍攝節目，透過媒體平台向公眾介紹回憶引導理念與社區服務。</p>
+                    </div>
+                  </article>
+                </div>
               </div>
             </div>
           </div>
@@ -321,7 +310,16 @@
       </div>
     </section>
 
-    <!-- 合作與參與 -->
+     <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+          <div class="modal-body p-0 text-center">
+            <img id="modalImage" class="img-fluid rounded-4 shadow" alt="" style="max-height: 90vh; object-fit: contain;">
+          </div>
+        </div>
+      </div>
+    </div>     
+      
     <section class="section-pad" id="community" style="background:var(--color-surface)">
       <div class="container">
         <div class="join-banner mb-4">
@@ -338,33 +336,19 @@
       </div>
     </section>
 
-    <!-- 聯絡 -->
     <section class="section-pad" id="contact">
       <div class="container">
         <div class="row g-4 align-items-start">
-          <div class="col-lg-7">
+          <div class="col-lg-12">
             <div class="contact-panel p-4 p-lg-5">
               <span class="eyebrow mb-3">聯絡我們</span>
-              <h2 class="section-title mb-3">歡迎查詢報名、合作或安排到點服務</h2>
-              <p class="muted mb-4">你可以在這裡填上正式聯絡資料、報名表、WhatsApp 或合作查詢方式，方便中心、院舍及公眾直接聯絡你們。</p>
+              <h2 class="section-title mb-3">歡迎查詢報名、合作或安排社區回憶引導服務</h2>
+                 <p class="muted mb-4">我們希望持續推動回憶引導在社區落地，逐步擴展服務網絡，培育更多回憶引導員，並為長者帶來更貼近需要的支援。若您對計劃感興趣，或有意成為合作夥伴，歡迎隨時與我們接洽。</p>
               <div class="row g-3 muted">
                 <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">電郵</strong> kenchan2@Ln.edu.hk</div>
-                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">電話</strong> +852 2616 7909</div>
-                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">地址</strong> 可改為香港合作機構地址</div>
-                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">服務查詢</strong> 培訓課程／中心合作／院舍到點服務</div>
+                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">電話／WhatsApp</strong> +852 2616 7909</div>
+                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">服務查詢</strong> 培訓課程／中心合作／院舍合作</div>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="content-card p-4 p-lg-5 h-100">
-              <h3 class="h4 mb-3">你之後可再補上的內容</h3>
-              <ul class="mb-0 ps-3 muted">
-                <li>8 月培訓的正式日期、時間及報名方式。</li>
-                <li>中心及院舍合作流程與服務範圍。</li>
-                <li>VR 回憶活動照片或示意圖。</li>
-                <li>真實活動照片，用於里程碑每個節點。</li>
-                <li>團隊、合作機構及研究評估資料。</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -373,17 +357,20 @@
   </main>
 
   <footer class="footer">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 font-medium">
-            <p class="mb-0 muted">© 2026 記憶與認知健康社區計劃(香港). All rights reserved.</p>
+    <div class="container text-center">
+      <p class="mb-0 muted">© 2026 記憶與認知健康社區計劃（香港）. All rights reserved.</p>
       <p class="mb-0 muted">協辦單位：星展銀行基金會 | 新加坡社科大學 | 台灣臺北醫學大學 | 香港嶺南大學</p>
-        </div>
-    </footer>
+    </div>
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script>
     (function () {
       const root = document.documentElement;
       const toggle = document.querySelector('[data-theme-toggle]');
+      const track = document.getElementById('milestoneTrack');
+      const prev = document.querySelector('.milestone-prev');
+      const next = document.querySelector('.milestone-next');
       let current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       root.setAttribute('data-theme', current);
       const renderIcon = () => {
@@ -397,6 +384,16 @@
         current = current === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', current);
         renderIcon();
+      });
+      const scrollAmount = () => Math.max(280, track.clientWidth * 0.9);
+      prev.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+      document.querySelectorAll('[data-bs-target="#imageModal"]').forEach(el => {
+        el.addEventListener('click', function () {
+          const modalImage = document.getElementById('modalImage');
+          modalImage.src = this.dataset.image || this.getAttribute('href');
+          modalImage.alt = this.dataset.alt || this.querySelector('img')?.alt || '';
+        });
       });
     })();
   </script>
