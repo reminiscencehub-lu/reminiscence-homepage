@@ -98,6 +98,17 @@
           <li class="nav-item"><a class="nav-link" href="#milestones">里程碑</a></li>
           <li class="nav-item"><a class="nav-link" href="#community">合作參與</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">聯絡我們</a></li>
+            <li class="nav-item ms-lg-2">
+  <a class="theme-toggle btn btn-outline-soft"
+     href="https://www.facebook.com/profile.php?id=61590164369577"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="前往 Facebook 專頁">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  </a>
+</li>
         </ul>
       </div>
     </div>
@@ -162,7 +173,7 @@
 
     
   <main id="main-content">
-    <section class="section-pad" id="overview">
+    <section class="section-pad" id="overview" style="background:var(--color-surface)">
       <div class="container">
         <div class="row g-4 align-items-start">
           <div class="col-lg-4">
@@ -361,12 +372,10 @@
       const prev = document.querySelector('.milestone-prev');
       const next = document.querySelector('.milestone-next');
       
-      // 里程碑滑動功能
       const scrollAmount = () => Math.max(280, track.clientWidth * 0.9);
       prev.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
       next.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
       
-      // 圖片放大（Modal）
       document.querySelectorAll('[data-bs-target="#imageModal"]').forEach(el => {
         el.addEventListener('click', function (e) {
           e.preventDefault(); 
