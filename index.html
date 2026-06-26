@@ -1,390 +1,670 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>記憶與認知健康社區計劃｜香港</title>
-  <meta name="description" content="透過回憶引導活動、培訓課程、VR 回憶體驗及社區合作，回應香港高齡化下長者認知障礙、抑鬱與孤獨等需要。">
-  <meta property="og:title" content="記憶與認知健康社區計劃｜香港">
-  <meta property="og:description" content="促進認知健康、生活質素及社交連結，並歡迎長者中心及院舍合作。">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.45rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.3rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.8rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem;
-      --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
-      --color-bg: #f5f3ee; --color-surface: #fcfbf8; --color-surface-2: #ffffff; --color-surface-tint: #eef4f3;
-      --color-border: #d8d2c8; --color-divider: #e5e0d9; --color-text: #25221c; --color-text-muted: #67625b; --color-text-faint: #918b83;
-      --color-primary: #145c63; --color-primary-hover: #0f464b; --color-primary-soft: #dfeeed; --color-secondary: #b86b2f; --color-secondary-soft: #f4e5d6;
-      --color-success: #48722d; --shadow-sm: 0 1px 3px rgba(37,34,28,.06); --shadow-md: 0 18px 40px rgba(37,34,28,.08);
-      --radius-sm: .5rem; --radius-md: .9rem; --radius-lg: 1.2rem; --radius-xl: 1.6rem; --radius-full: 999px; --font-body: 'Noto Sans TC', sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-    body { margin: 0; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.75; color: var(--color-text); background: var(--color-bg); }
-    a { text-decoration: none; color: var(--color-primary); }
-    a:hover { color: var(--color-primary-hover); }
-    img, svg, iframe { display: block; max-width: 100%; }
-    iframe { width: 100%; border: 0; }
-    .site-nav { background: rgba(245,243,238,.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-divider); }
-    .section-pad { padding: clamp(var(--space-12), 7vw, var(--space-20)) 0; }
-    .eyebrow { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .8rem; border-radius: var(--radius-full); background: var(--color-primary-soft); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; letter-spacing: .04em; }
-    .section-title { font-size: var(--text-xl); line-height: 1.2; font-weight: 800; letter-spacing: -.02em; }
-    .muted { color: var(--color-text-muted); }
-    .hero { padding: calc(84px + var(--space-12)) 0 var(--space-16); position: relative; overflow: hidden; background: linear-gradient(180deg, var(--color-surface), var(--color-bg)); }
-    .hero::before { content: ''; position: absolute; inset: auto auto -120px -120px; width: 320px; height: 320px; border-radius: 50%; background: rgba(20,92,99,.08); filter: blur(10px); }
-    .hero::after { content: ''; position: absolute; inset: -100px -60px auto auto; width: 260px; height: 260px; border-radius: 2rem; background: rgba(184,107,47,.08); transform: rotate(18deg); }
-    .hero-panel, .content-card, .program-card, .news-card, .contact-panel, .metric-card, .course-box, .story-card, .milestone-card, .service-card { background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-    .hero-panel { padding: var(--space-8); position: relative; z-index: 1; }
-    .hero-title { font-size: var(--text-2xl); line-height: 1.05; font-weight: 800; letter-spacing: -.04em; max-width: 12ch; }
-    .hero-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .metric-card, .program-card, .news-card, .story-card, .course-box, .service-card { padding: var(--space-5); height: 100%; }
-    .metric-card strong { display: block; font-size: var(--text-lg); color: var(--color-primary); }
-    .btn-main { background: var(--color-primary); border: 1px solid var(--color-primary); color: #fff; padding: .85rem 1.2rem; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 700; }
-    .btn-main:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); color: #fff; }
-    .btn-outline-soft { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); padding: .85rem 1.2rem; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 700; }
-    .accent-strip { border-left: 4px solid var(--color-secondary); padding-left: var(--space-4); }
-    .tag-list { display: flex; flex-wrap: wrap; gap: .6rem; }
-    .tag-pill { padding: .45rem .8rem; border-radius: var(--radius-full); background: var(--color-surface-tint); border: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text-muted); }
-    .course-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .join-banner { padding: var(--space-8); border-radius: var(--radius-xl); background: linear-gradient(135deg, var(--color-primary), #2a7377); color: #fff; box-shadow: var(--shadow-md); }
-    .milestone-carousel { position: relative; }
-    .milestone-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: .75rem; -ms-overflow-style: none; scrollbar-width: none; }
-    .milestone-track::-webkit-scrollbar { display: none; }
-    .milestone-slide { flex: 0 0 88%; scroll-snap-align: start; }
-    .milestone-card { overflow: hidden; height: 100%; }
-    .milestone-body { padding: var(--space-5); }
-    .milestone-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-surface-2); color: var(--color-text); display: inline-flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
-    .milestone-nav:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
-    .milestone-prev { left: -10px; }
-    .milestone-next { right: -10px; }
-    .footer { padding: var(--space-8) 0; background: var(--color-surface); border-top: 1px solid var(--color-divider); }
-    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-    .skip-link:focus { left: 1rem; top: 1rem; width: auto; height: auto; padding: .75rem 1rem; background: var(--color-primary); color: white; border-radius: .75rem; z-index: 9999; }
-    @media (min-width: 768px) { .milestone-slide { flex-basis: 48%; } }
-    @media (min-width: 1200px) { .milestone-slide { flex-basis: 31%; } }
-    @media (max-width: 991.98px) { .hero-title { max-width: none; } .course-steps { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 575.98px) { .hero-grid, .course-steps { grid-template-columns: 1fr; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記憶與認知健康社區計劃 - 嶺南大學</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hkRed: '#cc0000',         // 代表香港活力的經典紅
+                        hkBlue: '#0044aa',        // 代表海港與專業的精神藍
+                        hkLightBlue: '#e6f0ff',   // 明顯可見的質感淡藍底色
+                        hkLightRed: '#ffebeb'     // 明顯可見的質感淡紅底色
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            font-size: 18px; /* 初始字體整體放大一點 (標準通常為 16px) */
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        let currentFontSize = 18; // 呼應初始 18px
+        function adjustFontSize(action) {
+            if (action === 'increase' && currentFontSize < 24) {
+                currentFontSize += 1.5;
+            } else if (action === 'decrease' && currentFontSize > 14) {
+                currentFontSize -= 1.5;
+            } else if (action === 'reset') {
+                currentFontSize = 18;
+            }
+            // 透過修改根節點字體大小，令全站所有 rem 單位文字等比例縮放，絕不跑版
+            document.documentElement.style.fontSize = currentFontSize + 'px';
+        }
+    </script>
 </head>
-<body>
-  <a href="#main-content" class="skip-link">跳至主要內容</a>
+<body class="bg-white text-slate-800 font-sans antialiased">
 
-  <nav class="navbar navbar-expand-lg fixed-top site-nav" aria-label="主選單">
-    <div class="container py-2">
-      <a class="navbar-brand d-flex align-items-center gap-3 fw-bold" href="#top" style="color:var(--color-text)">
-        <span class="d-inline-flex align-items-center justify-content-center" style="width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));color:#fff;">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z" fill="currentColor" stroke="none"></path><circle cx="12" cy="9.2" r="2.4" fill="#fff"></circle></svg>
-        </span>
-        <span>記憶與認知健康社區計劃</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="切換導覽">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#overview">計劃概覽</a></li>
-          <li class="nav-item"><a class="nav-link" href="#course">培訓課程</a></li>
-          <li class="nav-item"><a class="nav-link" href="#updates">最新消息</a></li>
-          <li class="nav-item"><a class="nav-link" href="#milestones">里程碑</a></li>
-          <li class="nav-item"><a class="nav-link" href="#community">合作參與</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">聯絡我們</a></li>
-            <li class="nav-item ms-lg-2">
-  <a class="theme-toggle btn btn-outline-soft"
-     href="https://www.facebook.com/profile.php?id=61590164369577"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="前往 Facebook 專頁">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-    </svg>
-  </a>
-</li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto h-16 flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center space-y-0.5 sm:space-y-0 sm:space-x-3">
+                <span class="text-hkBlue font-bold text-base tracking-tight">記憶與認知健康社區計劃 - 嶺南大學</span>
+                <span class="hidden sm:inline text-slate-300">|</span>
+                <span class="bg-red-100 text-hkRed text-[10px] font-semibold px-2 py-0.5 rounded border border-red-200 w-max">星展基金會資助</span>
+            </div>
+            <nav class="flex items-center space-x-1 sm:space-x-3 md:space-x-4 text-xs sm:text-sm font-medium text-slate-600">
+                <a href="#context" class="hover:text-hkBlue transition px-1 py-1 text-hkRed font-bold">社會需要</a>
+                <a href="#about" class="hover:text-hkBlue transition px-1 py-1">關於計劃</a>
+                <a href="#features" class="hover:text-hkBlue transition px-1 py-1">核心板塊</a>
+                <a href="#training" class="hover:text-hkBlue transition px-1 py-1">引導員培訓</a>
+                <a href="#vr-activity" class="hover:text-hkBlue transition px-1 py-1 text-hkBlue font-bold border-b-2 border-hkBlue">VR活動</a>
+                <a href="#stats" class="hover:text-hkBlue transition px-1 py-1">服務成果</a>
+                <a href="#contact" class="hidden md:inline-block bg-hkRed text-white text-xs px-3 py-1.5 rounded-full hover:bg-red-700 transition">立即聯繫</a>
+                
+                <div class="flex items-center space-x-0.5 border border-slate-200 rounded-lg p-0.5 bg-slate-50 shadow-inner ml-1 sm:ml-2">
+                    <button onclick="adjustFontSize('decrease')" class="px-1.5 py-0.5 text-xs font-bold text-slate-500 hover:bg-slate-200 rounded transition" title="縮小字體">−</button>
+                    <button onclick="adjustFontSize('reset')" class="px-1 py-0.5 text-[11px] font-bold text-slate-700 hover:bg-slate-200 rounded transition" title="還原大小">Aa</button>
+                    <button onclick="adjustFontSize('increase')" class="px-1.5 py-0.5 text-xs font-bold text-slate-500 hover:bg-slate-200 rounded transition" title="放大字體">+</button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <header class="hero" id="top">
-    <div class="container">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-6">
-          <div class="hero-panel h-100">
-            <span class="eyebrow mb-3">回憶引導在香港</span>
-            <h1 class="fs-1 mb-4">透過回憶引導，把理解、陪伴與社區支援帶到長者身邊。</h1>
-            <p class="muted mb-4">香港正面對高齡化，部分長者同時面對認知障礙、抑鬱及孤獨等狀況，因此本計劃希望在社區推動回憶引導活動，改善長者的認知、生活質素與社交連結，並探究這些介入對長者及照顧者雙方帶來的改變。</p>
-            <div class="d-flex flex-wrap gap-3 mb-4">
-              <a class="btn btn-main" href="#community">立即參與</a>
-              <a class="btn btn-outline-soft" href="#milestones">了解服務</a>
+
+    <section class="relative overflow-hidden bg-white py-8 lg:py-12 border-b border-slate-100">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-slate-50 px-3 py-1 rounded-full border border-slate-200">
+                    <span class="flex h-2 w-2 rounded-full bg-hkRed animate-pulse"></span>
+                    <span class="text-xs font-medium text-slate-600">跨區域亞太記憶健康網絡推動</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                    記憶與認知健康<br><span class="text-hkBlue">社區計劃</span>
+                </h1>
+                <p class="text-sm sm:text-base text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    「他們或許會忘記日子，卻偶爾記起那些動人的瞬間。」<br>
+                    由嶺南大學與新加坡社科大學（SUSS）攜手推動，透過透過與本地不同的機構合作，展開一系列回憶引導活動，幫助長者重拾人生故事，促進社交與認知健康。
+                </p>
+                <div class="pt-2 flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
+                    <a href="#training" class="bg-hkRed text-white font-semibold px-6 py-2.5 rounded-xl shadow-md shadow-red-600/10 hover:bg-red-700 transition text-sm text-center">
+                        成為回憶引導員
+                    </a>
+                    <a href="#contact" class="bg-hkBlue text-white font-semibold px-6 py-2.5 rounded-xl shadow-md shadow-blue-600/10 hover:bg-blue-800 transition text-sm text-center">
+                        了解第二期課程
+                    </a>
+                </div>
             </div>
-            <div class="tag-list">
-              <span class="tag-pill">高齡化社區</span>
-              <span class="tag-pill">認知健康</span>
-              <span class="tag-pill">回憶引導</span>
-              <span class="tag-pill">照顧者支援</span>
-              <span class="tag-pill">VR 回憶活動</span>
+            <div class="relative w-full h-auto">
+                <img src="/images/1st_cohort_services.jpg" alt="第一期成果" class="w-full h-auto object-contain block rounded-3xl" />
+                <div class="absolute inset-x-0 bottom-0 flex items-end pt-12 pb-2 px-3 sm:pb-3 sm:px-4 bg-gradient-to-t from-slate-900/90 to-transparent rounded-b-3xl">
+                    <p class="text-white font-medium text-xs sm:text-sm [text-shadow:_1px_1px_2px_rgba(0,0,0,0.8),_0_0_1em_rgba(0,0,0,0.5)]">
+        「用心傾聽與尊重長者的內心世界」- 第一期回憶引導員社區實習活動剪影
+                    </p>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
+
+
+    <section id="context" class="py-10 bg-hkLightRed border-b border-blue-200/60">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkRed">The Societal Need</h2>
+                <p class="text-2xl font-extrabold text-slate-900">面對海嘯式高齡化：我們看見的社區需要</p>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    香港正面臨前所未有的人口結構轉變。根據政府統計處最新推算，至 2046 年高齡人口比例將大幅飆升至 <span class="font-bold text-slate-900">36.0%</span><a href="#ref-1" class="text-brandOrange font-bold text-xs h-full align-top px-0.5 hover:underline">[1]</a>，意味著每 3 名香港人中就有 1 人是長者。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4 bg-white p-5 sm:p-6 rounded-xl border border-blue-200/60 shadow-md">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-hkRed block"></span>
+                        <span>高齡社區下的核心迫切需要</span>
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-slate-50 rounded-lg border-l-4 border-red-600">
+                            <h4 class="font-bold text-slate-800 text-sm sm:text-base">1. 延緩認知障礙症（腦退化症）的急劇蔓延</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                香港 60 歲或以上的社區長者中，患有認知障礙症的盛行率高達 <span class="font-semibold text-slate-900">9.7%</span><a href="#ref-2" class="text-brandOrange font-bold text-xs h-full align-top px-0.5 hover:underline">[2]</a>。大腦神經細胞的急劇退化，讓長者逐漸失去記憶與自理能力，迫切需要非藥物媒介介入。
+                            </p>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-lg border-l-4 border-blue-600">
+                            <h4 class="font-bold text-slate-800 text-sm sm:text-base">2. 化解社區孤獨感與社交孤立</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                與社會脫節產生的強烈「社區孤獨感」，在臨床上已被證實與老年抑鬱症有高度正相關，並會顯著加速大腦認知功能的衰退<a href="#ref-3" class="text-brandOrange font-bold text-xs h-full align-top px-0.5 hover:underline">[3]</a>，極需建立深層次的情感網絡。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4 lg:pt-1">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-hkBlue block"></span>
+                        <span>破局關鍵：為何引入「回憶引導」？</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        面對逐漸模糊的記憶，<strong>「回憶引導（Reminiscence Therapy）」</strong>是一種極具溫度且具備堅實神經科學實証的非藥物介入手段：
+                    </p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-2.5">
+                            <div class="bg-white text-hkBlue p-1 rounded-lg shrink-0 mt-0.5 border border-blue-200 shadow-sm">
+                                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-800">活化殘存大腦皮質，延緩退化<a href="#ref-4" class="text-brandOrange font-bold text-xs h-full align-top px-0.5 hover:underline">[4]</a></h4>
+                                <p class="text-xs text-slate-700 mt-0.5 leading-relaxed">
+                                    透過舊照片、老歌等熟悉的多感官刺激，能有效繞過受損的近期記憶，直接喚醒深藏於大腦新皮質中保存完好的遠期自傳式記憶。
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <div class="bg-white text-hkBlue p-1 rounded-lg shrink-0 mt-0.5 border border-blue-200 shadow-sm">
+                                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-800">重拾生命尊嚴，舒緩老年抑鬱</h4>
+                                <p class="text-xs text-slate-700 mt-0.5 leading-relaxed">
+                                    根據國際醫學權威 Cochrane 系統性綜述，回憶引導能協助長者重新整合生命歷程，對於改善生活質素有顯著成效<a href="#ref-5" class="text-brandOrange font-bold text-xs h-full align-top px-0.5 hover:underline">[5]</a>。
+                                </p>
+                            </div>                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>        
+    </section>
+
+
+    <section id="about" class="py-12 bg-white border-b border-slate-100">
+    <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto text-center space-y-8">
+        
+        <h2 class="text-xs font-bold uppercase tracking-widest text-hkRed/80">About the Programme</h2>
+        
+        <div class="relative flex items-center justify-center max-w-2xl mx-auto my-6">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t-2 border-hkRed"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-hkRed text-white px-6 py-2.5 rounded-full font-bold text-lg sm:text-xl tracking-wide shadow-md">
+                     區域回憶中心 (Regional Reminiscence Hub) 
+                </span>
+            </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="cluster">
-            <div class="content-card p-4">
-              <div class="row g-3 align-items-center">
-                <div class="col-md-5">
-                  <img src="images/blood%20flow.png" class="img-fluid rounded-4" alt="研究圖示">
-                </div>
-                <div class="col-md-7">
-                  <p class="mb-0 accent-strip">研究發現，長者進行懷舊與回憶對談時，大腦前額葉皮質血流量高於一般日常對話，流入腦中血液量<strong class="text-danger mx-1">增加高達80倍</strong>！這可大幅協助長者增加互動、提升情緒與認知刺激。</p>
-                </div>
-              </div>
-            </div>
-<p></p>
-            <div class="hero-grid">
-              <div class="metric-card"><span class="muted d-block mb-1">重點需要</span><strong>認知與情緒</strong><span class="muted">關注認知障礙、抑鬱與孤獨</span></div>
-              <div class="metric-card"><span class="muted d-block mb-1">核心方法</span><strong>回憶引導</strong><span class="muted">以記憶、故事與互動建立連結</span></div>
-              <div class="metric-card"><span class="muted d-block mb-1">服務場景</span><strong>中心與院舍</strong><span class="muted">可到點提供回憶引導活動</span></div>
-              <div class="metric-card"><span class="muted d-block mb-1">培訓課程</span><strong>回憶引導培訓</strong><span class="muted">培訓長者或照顧者成為引導員</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div class="max-w-3xl mx-auto">
+    <p class="text-base sm:text-lg text-slate-700 leading-relaxed text-justify sm:text-center font-normal">
+        正如航空樞紐匯集各家航司航線一樣，<span class="font-black text-slate-900 tracking-wider text-lg sm:text-xl border-b-2 border-slate-400 pb-0.5 mx-0.5">RHub</span> 串聯亞太區內的各個服務機構。<br>
+        嶺南大學自2025年中起，在<span class="text-hkRed font-bold">星展基金會</span>的支持下，與<span class="text-blue-800 font-bold">新加坡社科大學</span>攜手合作，聯同亞太區多所大學及機構推動「記憶與認知健康社區計劃」。計劃透過與本地社區機構合作，開展一系列回憶引導活動，幫助社區長者重拾人生故事，促進社交與認知健康。
+    </p>
+</div>
     </div>
-      <p></p>
-      <div class="container">
-          <div class="row g-4 align-items-start">
-              <div class="col-lg-12">
-                  <div class="content-card p-4">
-          <p class="mb-0 accent-strip">計劃希望透過訓練與陪伴，培育一群懂得傾聽、願意陪伴的回憶引導員，讓回憶的力量在社區中生根發芽。</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
+</section>
 
+
+    <section id="features" class="py-10 bg-hkLightBlue border-b border-red-200/60">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
+            <div class="text-center space-y-1">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Three Pillars</h2>
+                <p class="text-2xl font-extrabold text-slate-900">計劃三大部分</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-red-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-red-50 text-hkRed flex items-center justify-center font-bold text-base border border-red-100">1</div>
+                        <h3 class="text-lg font-bold text-slate-900">回憶引導員培訓</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            招募熱心長者及照顧者接受專業認證培訓，通過系統化理論與實務考核，成為社區記憶守護的核心力量。
+                        </p>
+                    </div>
+                    <a href="#training" class="text-xs font-semibold text-hkRed pt-3 block hover:underline">查看具體培訓步驟 &rarr;</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-red-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-hkBlue flex items-center justify-center font-bold text-base border border-blue-100">2</div>
+                        <h3 class="text-lg font-bold text-slate-900">VR 回憶引導活動</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            運用虛擬實境（VR）技術突破時空限制，提供每位長者完整 12 節沉浸式體驗，由完訓的引導員全程陪伴與帶領。
+                        </p>
+                    </div>
+                    <a href="#vr-activity" class="text-xs font-semibold text-hkBlue pt-3 block hover:underline">科技賦能懷舊 &rarr;</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-red-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-base border border-slate-200">3</div>
+                        <h3 class="text-lg font-bold text-slate-900">社區研究</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            科學化評估活動對引導員與參與長者在「生活品質、情緒及認知健康狀況」的長遠正面轉變。
+                        </p>
+                    </div>
+                    <a href="#stats" class="text-xs font-semibold text-slate-600 pt-3 block hover:underline">學術成果實證 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="training" class="py-10 bg-hkLightRed border-b border-slate-100">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Training Roadmap</h2>
+                <p class="text-2xl font-extrabold text-slate-900">回憶引難員培訓計劃：如何成為回憶引導員？</p>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    本培訓課程專為<strong>熱心長者、家庭照顧者以及對銀髮健康有興趣的公眾人士</strong>設計。我們引進跨區域聯合開發的國際級培育模型，通過以下三個學習階段，即可轉化為社區專業的非藥物治療支持力量。
+                </p>
+                <div class="pt-1 flex flex-wrap justify-center gap-1.5">
+                    <span class="bg-white text-hkBlue text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-blue-100 shadow-sm">不設學歷要求</span>
+                    <span class="bg-white text-hkRed text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-red-100 shadow-sm">提供證書認證</span>
+                    <span class="bg-white text-slate-600 text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-slate-200 shadow-sm">包含12節社區實習</span>
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto space-y-6">
+                
+                <div class="bg-white rounded-2xl border border-slate-200/70 shadow-sm p-5 sm:p-6 flex flex-col lg:flex-row gap-4 lg:gap-8 hover:shadow-md hover:border-hkRed/40 transition duration-200">
+                    <div class="lg:w-1/4 flex lg:flex-col justify-between items-center lg:items-start border-b lg:border-b-0 lg:border-r border-slate-100 pb-3 lg:pb-0 lg:pr-4 shrink-0">
+                        <div class="flex items-center lg:flex-col items-center lg:items-start gap-3 lg:gap-2">
+                            <div class="w-10 h-10 rounded-full bg-hkRed text-white flex items-center justify-center font-black text-sm tracking-wide shadow-sm">01</div>
+                            <div>
+                                <span class="block text-[10px] font-bold text-hkRed tracking-wide uppercase leading-none">Phase 1</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-1">線上自主學習</h3>
+                            </div>
+                        </div>
+                        <div class="text-right lg:text-left mt-0 lg:mt-4">
+                            <span class="inline-block bg-slate-50 text-slate-500 text-[11px] px-2 py-0.5 rounded border border-slate-200/60 font-medium">模式：線上自學</span>
+                            <span class="block text-[11px] font-semibold text-hkRed mt-0.5">奠定學術根基</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/4 flex items-center">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            學員將登入專屬線上學習平台。此階段著重於<strong>獨立建構基礎理論知識</strong>，彈性安排時間自主修讀，深入學習高齡認知學、懷舊引導的核心精神、生命歷程基礎以及長者基本溝通原則，為實體實戰做好全面理論準備。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200/70 shadow-sm p-5 sm:p-6 flex flex-col lg:flex-row gap-4 lg:gap-8 hover:shadow-md hover:border-hkBlue/40 transition duration-200">
+                    <div class="lg:w-1/4 flex lg:flex-col justify-between items-center lg:items-start border-b lg:border-b-0 lg:border-r border-slate-100 pb-3 lg:pb-0 lg:pr-4 shrink-0">
+                        <div class="flex items-center lg:flex-col items-center lg:items-start gap-3 lg:gap-2">
+                            <div class="w-10 h-10 rounded-full bg-hkBlue text-white flex items-center justify-center font-black text-sm tracking-wide shadow-sm">02</div>
+                            <div>
+                                <span class="block text-[10px] font-bold text-hkBlue tracking-wide uppercase leading-none">Phase 2</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-1">實體面對面培訓</h3>
+                            </div>
+                        </div>
+                        <div class="text-right lg:text-left mt-0 lg:mt-4">
+                            <span class="inline-block bg-slate-50 text-slate-500 text-[11px] px-2 py-0.5 rounded border border-slate-200/60 font-medium">模式：實體工作坊</span>
+                            <span class="block text-[11px] font-semibold text-hkBlue mt-0.5">掌握回憶活動技巧</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/4 space-y-2.5">
+                        <p class="text-xs text-slate-500 font-medium">由嶺南大學與專業導師親自帶領，依據專業教材系統化解構實務技巧：</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 shadow-inner">
+                                <span class="inline-block px-1.5 py-0.5 bg-red-50 text-hkRed font-bold text-[10px] rounded mb-1">第一節</span>
+                                <h4 class="font-bold text-slate-900 mb-0.5">理論與心法</h4>
+                                <p class="text-slate-600 leading-relaxed text-[11px]">探討成功老齡化現況，建構「生命歷程途徑」與以人為本關護理念。</p>
+                            </div>
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 shadow-inner">
+                                <span class="inline-block px-1.5 py-0.5 bg-blue-50 text-hkBlue font-bold text-[10px] rounded mb-1">第二節</span>
+                                <h4 class="font-bold text-slate-900 mb-0.5">溝通與策略</h4>
+                                <p class="text-slate-600 leading-relaxed text-[11px]">實戰演練引導員溝通與高效訪談技巧，掌握不同回憶者類型的互動策略。</p>
+                            </div>
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 shadow-inner">
+                                <span class="inline-block px-1.5 py-0.5 bg-slate-200 text-slate-700 font-bold text-[10px] rounded mb-1">第三節</span>
+                                <h4 class="font-bold text-slate-900 mb-0.5">活動與資源</h4>
+                                <p class="text-slate-600 leading-relaxed text-[11px]">深度解構回憶活動的結構與種類，學習引導員角色定位與資源探索。</p>
+                            </div>
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-100 shadow-inner">
+                                <span class="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 font-bold text-[10px] rounded mb-1">第四節</span>
+                                <h4 class="font-bold text-slate-900 mb-0.5">考核與規範</h4>
+                                <p class="text-slate-600 leading-relaxed text-[11px]">掌握文件記錄必備內容與反思，嚴格遵循回憶引導實習標準作業程序(SOP)。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200/70 shadow-sm p-5 sm:p-6 flex flex-col lg:flex-row gap-4 lg:gap-8 hover:shadow-md hover:border-slate-400 transition duration-200">
+                    <div class="lg:w-1/4 flex lg:flex-col justify-between items-center lg:items-start border-b lg:border-b-0 lg:border-r border-slate-100 pb-3 lg:pb-0 lg:pr-4 shrink-0">
+                        <div class="flex items-center lg:flex-col items-center lg:items-start gap-3 lg:gap-2">
+                            <div class="w-10 h-10 rounded-full bg-slate-700 text-white flex items-center justify-center font-black text-sm tracking-wide shadow-sm">03</div>
+                            <div>
+                                <span class="block text-[10px] font-bold text-slate-500 tracking-wide uppercase leading-none">Phase 3</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-1">社區實習實踐</h3>
+                            </div>
+                        </div>
+                        <div class="text-right lg:text-left mt-0 lg:mt-4">
+                            <span class="inline-block bg-slate-50 text-slate-500 text-[11px] px-2 py-0.5 rounded border border-slate-200/60 font-medium">模式：社區實地督導</span>
+                            <span class="block text-[11px] font-semibold text-slate-700 mt-0.5">完成服務獲發證書</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/4 flex flex-col justify-between gap-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            完成線上自學與實體課堂後，學員將被分派至各大合作機構，親身走入社區，<strong>在真實環境中完成共 12 節的回憶引導實習工作</strong>。
+                        </p>
+                        <div class="bg-white rounded-2xl border border-slate-200/70 shadow-sm p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="text-center md:text-left">
+        <h4 class="text-sm font-bold text-slate-900 tracking-wide">本計劃指定社區實習機構</h4>
+        <p class="text-[11px] text-slate-500 mt-0.5">學員將被分派至以下合作單位完成 12 節實務工作</p>
+    </div>
     
-  <main id="main-content">
-    <section class="section-pad" id="overview" style="background:var(--color-surface)">
-      <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-4">
-            <span class="eyebrow mb-3">計劃概覽</span>
-            <h2 class="section-title mb-3">從社區需要出發，回應長者身心與社交狀況</h2>
-            <p class="muted mb-0">本計劃關注香港高齡化下長者在認知、情緒及社交層面的需要，期望透過回憶引導活動，把生命故事、陪伴互動與社區支援連結起來，建立更有溫度的服務模式。</p>
-          </div>
-          <div class="col-lg-8">
-            <div class="row g-3">
-              <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們關注的情況</h3><p class="muted mb-0">認知障礙、抑鬱、孤獨感及社交退縮，都是不少長者與照顧者正在面對的挑戰。</p></article></div>
-              <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們的做法</h3><p class="muted mb-0">透過回憶活動、互動體驗、回憶引導培訓與服務，建立可持續的社區參與模式。</p></article></div>
-              <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們希望看到</h3><p class="muted mb-0">長者在認知能力、生活質素及社交互動方面有正面改變，照顧者亦在參與過程中獲得成長與支持。</p></article></div>
-              <div class="col-md-6"><article class="program-card"><h3 class="h4 mb-3">我們探究的方向</h3><p class="muted mb-0">了解回憶引導對長者與帶領者雙方在認知、社交及生活感受上的影響，為未來社區服務提供更多實證基礎。</p></article></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-     <section class="section-pad" id="course">
-      <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-6">
-            <span class="eyebrow mb-3">培訓課程</span>
-            <h2 class="section-title mb-3">回憶引導培訓課程</h2>
-            <p class="muted mb-0">回憶引導培訓課程對象為長者或照顧者。課程將幫助參加者理解回憶引導的理念、帶領技巧及實務應用，並鼓勵他們在社區中成為願意傾聽、願意陪伴的回憶引導員。</p><p></p>
-              <img src="images/map.jpeg" class="figure-img img-fluid rounded">
-          </div>
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">1.線上課程</h3><p class="muted mb-3">完成必要的線上課程以建立懷舊與回憶引導的基礎知識，涵蓋引導原則、5大核心素養與能力 (5 RECs) 及 4Ws 活動設計方法。</p></article></div>
-              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">2.實體培訓</h3><p class="muted mb-3">參加為期兩天的實體培訓課程，透過角色扮演與模擬懷舊情境，獲得實踐經驗與有效溝通技巧。</p></article></div>
-              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">3.取得證書</h3><p class="muted mb-3">獲得由新加坡社科大學發出的「回憶引導員證書」。</p></article></div>
-              <div class="col-md-12"><article class="service-card"><h3 class="h4 mb-3">4.微型工作機會</h3><p class="muted mb-3">提供微工作機會，讓參與者在活中累積經驗，並增強社交連結。</p></article></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>     
-  
-    <section class="section-pad" id="updates" style="background:var(--color-surface)">
-      <div class="container">
-        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
-          <div>
-            <span class="eyebrow mb-3">最新消息</span>
-            <h2 class="section-title mb-2">近期活動與服務安排</h2>
-            <p class="muted mb-0">這裡適合持續更新培訓報名、中心合作、VR 服務與社區活動安排。</p>
-          </div>
-          <a class="btn btn-outline-soft" href="#contact">查詢合作</a>
-        </div>
-        <div class="row g-3">
-          <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">將於2026年9月開展</span><h3 class="h4 mb-3">回憶引導培訓課程</h3><p class="muted mb-0">面向長者或照顧者，培養回憶引導員，讓參加者成為社區陪伴與帶領的一分子。</p></article></div>
-          <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">現正洽談</span><h3 class="h4 mb-3">中心與院舍合作服務</h3><p class="muted mb-0">歡迎長者中心、院舍及社區單位與我們合作，由計劃安排回憶引導員到點提供服務。</p></article></div>
-          <div class="col-lg-4"><article class="news-card"><span class="eyebrow mb-3">特色服務</span><h3 class="h4 mb-3">VR 回憶引導活動</h3><p class="muted mb-0">以 VR 體驗結合回憶引導，把更具沉浸感的互動帶到中心或院舍，讓長者在熟悉感與新鮮感之間打開交流空間。</p></article></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="milestones">
-      <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-4">
-            <span class="eyebrow mb-3">里程碑</span>
-            <h2 class="section-title mb-3">計劃歷程</h2>
-              <article class="news-card"><p class="muted mb-0">2025年至今</p><br><p>已舉辦回憶引導員培訓課程:2場<br>完成培訓的義工: 60+<br>受惠的長者: 240+<br>VR回憶引導活動受惠的長者: 20+</p></article>
-          </div>
-          <div class="col-lg-8">
-            <div class="milestone-carousel">
-              <button class="milestone-nav milestone-prev" type="button" aria-label="上一個里程碑">&#8249;</button>
-              <button class="milestone-nav milestone-next" type="button" aria-label="下一個里程碑">&#8250;</button>
-              <div class="milestone-track" id="milestoneTrack">
-                <div class="milestone-slide">
-                  <article class="milestone-card h-100">
-                    <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/Pxv4ODuBUkw" title="第一期回憶引導員培訓課程影片" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="milestone-body">
-                      <div class="small muted mb-2">2025年9月24及25日</div>
-                      <h3 class="h5 mb-2">第一期回憶引導員培訓課程</h3>
-                      <p class="muted mb-0">第一期培訓順利完成，為社區建立首批回憶引導員，打下服務推展的基礎。</p>
-                    </div>
-                  </article>
-                </div>
-                <div class="milestone-slide">
-                  <article class="milestone-card h-100">
-                    <a href="images/1st_cohort_services.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="images/1st_cohort_services.jpg" data-alt="第一期回憶引導員社區服務">
-                      <img src="images/1st_cohort_services.jpg" class="w-100" alt="第一期回憶引導員社區服務" style="aspect-ratio: 16/10; object-fit: cover; border-bottom: 1px solid var(--color-border); cursor: zoom-in;">
-                    </a>
-                    <div class="milestone-body">
-                      <div class="small muted mb-2">2025年10月至2026年2月</div>
-                      <h3 class="h5 mb-2">第一期回憶引導員社區服務</h3>
-                      <p class="muted mb-0">31 位完成培訓的回憶引導員，於 7 個服務單位服務超過 124 位長者，讓回憶引導走進社區。</p>
-                    </div>
-                  </article>
-                </div>
-                <div class="milestone-slide">
-                  <article class="milestone-card h-100">
-                    <a href="images/2nd_cohort.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="images/VR.jpg" data-alt="VR回憶引導活動開展">
-                      <img src="images/VR.jpg" class="w-100" alt="VR回憶引導活動開展" style="aspect-ratio: 16/10; object-fit: cover; border-bottom: 1px solid var(--color-border); cursor: zoom-in;">
-                    </a>
-                    <div class="milestone-body">
-                      <div class="small muted mb-2">2025年12月</div>
-                      <h3 class="h5 mb-2">VR回憶引導活動開展</h3>
-                      <p class="muted mb-0">VR 回憶引導活動已開始在社區、中心及院舍推行，透過沉浸式體驗喚起長者的生活記憶，促進對話、參與感與社交互動。</p>
-                    </div>
-                  </article>
-                </div>
-                   <div class="milestone-slide">
-                  <article class="milestone-card h-100">
-                    <a href="images/2nd_cohort.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="images/2nd_cohort.jpg" data-alt="第二期回憶引導員培訓課程">
-                      <img src="images/2nd_cohort.jpg" class="w-100" alt="第二期回憶引導員培訓課程" style="aspect-ratio: 16/10; object-fit: cover; border-bottom: 1px solid var(--color-border); cursor: zoom-in;">
-                    </a>
-                    <div class="milestone-body">
-                      <div class="small muted mb-2">2026年3月9及11日</div>
-                      <h3 class="h5 mb-2">第二期回憶引導員培訓課程</h3>
-                      <p class="muted mb-0">第二期課程正式展開，持續培育更多長者及照顧者參與回憶引導服務。</p>
-                    </div>
-                  </article>
-                </div>
-                  <div class="milestone-slide">
-                  <article class="milestone-card h-100">
-                    <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/wgmwiF-iFIs?si=2DFc-KHM1zkIj3W3" title="凝聚香港 – VR科技結合回憶引導活動，協助有認知障礙長者重拾回憶，提升認知功能與社交聯結。" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="milestone-body">
-                      <div class="small muted mb-2">2026年3月31日</div>
-                      <h3 class="h5 mb-2">VR 回憶引導活動接受香港電臺邀請拍攝節目</h3>
-                      <p class="muted mb-0">獲香港電臺邀請合作拍攝節目，透過媒體平台向公眾介紹回憶引導理念與社區服務。</p>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-     <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-transparent border-0">
-          <div class="modal-body p-0 text-center">
-            <img id="modalImage" class="img-fluid rounded-4 shadow" alt="" style="max-height: 90vh; object-fit: contain;">
-          </div>
-        </div>
-      </div>
-    </div>     
-      
-    <section class="section-pad" id="community" style="background:var(--color-surface)">
-      <div class="container">
-        <div class="join-banner mb-4">
-          <span class="eyebrow mb-3" style="background:rgba(255,255,255,.16);color:#fff">合作與參與</span>
-          <h2 class="section-title mb-3" style="color:#fff">歡迎長者中心、院舍、照顧者及社區夥伴一起加入</h2>
-          <p class="mb-0">我們希望把回憶引導帶進不同社區場景，讓更多長者受惠，也讓照顧者、機構及計劃團隊在合作中共同成長，達致更具持續性的雙贏局面。</p>
-        </div>
-        <div class="row g-3">
-          <div class="col-md-6 col-xl-3"><article class="program-card"><h3 class="h5 mb-3">長者</h3><p class="muted mb-0">可參與回憶活動、VR 體驗及社區小組，增加互動與參與感。</p></article></div>
-          <div class="col-md-6 col-xl-3"><article class="program-card"><h3 class="h5 mb-3">照顧者</h3><p class="muted mb-0">可透過課程與活動成為回憶引導員，發展新的陪伴方式。</p></article></div>
-          <div class="col-md-6 col-xl-3"><article class="program-card"><h3 class="h5 mb-3">中心／院舍</h3><p class="muted mb-0">可邀請計劃到點提供回憶引導服務或 VR 活動，豐富機構服務內容。</p></article></div>
-          <div class="col-md-6 col-xl-3"><article class="program-card"><h3 class="h5 mb-3">合作夥伴</h3><p class="muted mb-0">可共同策劃活動、分享資源、招募參加者及擴大社區網絡。</p></article></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="contact">
-      <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-12">
-            <div class="contact-panel p-4 p-lg-5">
-              <span class="eyebrow mb-3">聯絡我們</span>
-              <h2 class="section-title mb-3">歡迎查詢報名、合作或安排社區回憶引導服務</h2>
-                 <p class="muted mb-4">我們希望持續推動回憶引導在社區落地，逐步擴展服務網絡，培育更多回憶引導員，並為長者帶來更貼近需要的支援。若您對計劃感興趣，或有意成為合作夥伴，歡迎隨時與我們接洽。</p>
-              <div class="row g-3 muted">
-                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">電郵</strong> kenchan2@Ln.edu.hk</div>
-                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">電話／WhatsApp</strong> +852 2616 7909</div>
-                <div class="col-md-6"><strong class="d-block" style="color:var(--color-text)">服務查詢</strong> 培訓課程／中心合作／院舍合作</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container text-center">
-      <p class="mb-0 muted">© 2026 記憶與認知健康社區計劃（香港）. All rights reserved.</p>
-      <p class="mb-0 muted">協辦單位：星展銀行基金會 | 新加坡社科大學 | 台灣臺北醫學大學 | 香港嶺南大學</p>
+    <div class="flex flex-wrap items-center justify-center gap-6 bg-slate-50/50 px-6 py-3 rounded-xl border border-slate-100 w-full md:w-auto">
+        <img src="images/logo_yanoitong.png" alt="仁愛堂" class="h-10 md:h-12 w-auto object-contain max-w-[100px]" title="仁愛堂" />
+        <img src="images/logo_naac.png" alt="鄰舍輔導會" class="h-10 md:h-12 w-auto object-contain max-w-[110px]" title="鄰舍輔導會" />
+        <img src="images/logo_forwardliving.png" alt="迎進生活" class="h-10 md:h-12 w-auto object-contain max-w-[100px]" title="迎進生活" />
     </div>
-  </footer>
+</div>
+                    </div>
+                </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script>
-    (function () {
-      const track = document.getElementById('milestoneTrack');
-      const prev = document.querySelector('.milestone-prev');
-      const next = document.querySelector('.milestone-next');
-      
-      const scrollAmount = () => Math.max(280, track.clientWidth * 0.9);
-      prev.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
-      next.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
-      
-      document.querySelectorAll('[data-bs-target="#imageModal"]').forEach(el => {
-        el.addEventListener('click', function (e) {
-          e.preventDefault(); 
-          const modalImage = document.getElementById('modalImage');
-          modalImage.src = this.dataset.image || this.getAttribute('href');
-          modalImage.alt = this.dataset.alt || this.querySelector('img')?.alt || '';
-        });
-      });
-    })();
-  </script>
+            </div>
+
+            <div class="bg-blue-50 rounded-xl p-4 max-w-4xl mx-auto border border-blue-200 flex flex-col sm:flex-row items-center gap-4 shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-hkBlue text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div class="text-center sm:text-left space-y-0.5">
+                    <h4 class="font-bold text-slate-900 text-sm sm:text-base">完訓後的專業肯定</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        順利通過三個階段學習並完成社區實習的學員，將獲頒由<strong>新加坡社科大學（SUSS）簽發的「專業回憶引導員證書」</strong>。
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+    <section id="recruitment" class="py-10 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 text-hkRed">
+                <span class="flex h-3 w-3 rounded-full bg-hkRed animate-pulse"></span>
+                <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">第二期回憶引導員招募即將啟動</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                第二期預計招募 <span class="text-slate-900 font-bold underline decoration-hkRed decoration-2">20 名長者及 20 名照顧者</span> 參與培訓。歡迎各區義工、照顧者報名參與。
+            </p>
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-2">
+                <p class="font-bold text-slate-900 flex items-center gap-1.5">
+                    <span>📌 報名須知：</span>
+                </p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                    <li>參與者必須完成12節社區實習才能獲派證書。</li>
+                    <li>實習地點將主要安排於本地長者服務機構。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+<section id="vr-activity" class="py-12 bg-white border-b border-slate-100">
+    <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Immersive Reminiscence</h2>
+            <p class="text-2xl font-extrabold text-slate-900">科技賦能：VR 沉浸式回憶引導活動</p>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                打破傳統照片的平面限制，本計劃開創性引入虛擬實境技術，為長者提供完整 <strong>12 節的深度沉浸式懷舊旅程</strong>。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- 左側：活動特點介紹 -->
+            <div class="lg:col-span-7 space-y-5">
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-4 shadow-sm">
+                    
+                    <!-- 特點一：雙重專業帶領者機制 -->
+                    <div class="flex items-start gap-3">
+                        <!-- 已將「人」字替換為「引導者/專業人員」圖標 -->
+                        <div class="w-8 h-8 rounded-full bg-hkBlue text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-base">雙重專業帶領者機制</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                每次活動均由<strong>嶺南大學工作人員</strong>或<strong>已受訓之專業 VR 回憶引導員</strong>進行全程陪伴與現場安全督導。帶領者不只是技術操作者，更是長者心靈故事的傾聽者與導航員。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200/60 my-2"></div>
+
+                    <!-- 特點二：VR 內容與香港在地情懷深度連結 -->
+                    <div class="flex items-start gap-3">
+                        <!-- 已將「港」字替換為「在地足跡/地標」圖標 -->
+                        <div class="w-8 h-8 rounded-full bg-hkRed text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-base">VR 內容與香港在地情懷深度連結</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                本計劃之 VR 內容經嚴謹編排，將虛擬實境（VR）的視覺情境，精準對應至<strong>香港經典地方與本土集體回憶</strong>。在專業人員的帶領下，長者透過沉浸式場景探索，配合視覺、聽覺等精心設計的多感官刺激，有效活化大腦的長期記憶，達致認知活化之成效。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 標籤區 -->
+                <div class="space-y-2">
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">經典香港主題場景連結示例：</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-50 text-hkBlue text-xs px-2.5 py-1 rounded-lg border border-blue-100 font-medium">舊啟德機場</span>
+                        <span class="bg-blue-50 text-hkBlue text-xs px-2.5 py-1 rounded-lg border border-blue-100 font-medium">中環天星碼頭</span>
+                        <span class="bg-blue-50 text-hkBlue text-xs px-2.5 py-1 rounded-lg border border-blue-100 font-medium">荔園遊樂場</span>
+                        <span class="bg-blue-50 text-hkBlue text-xs px-2.5 py-1 rounded-lg border border-blue-100 font-medium">老字號傳統茶樓</span>
+                        <span class="bg-blue-50 text-hkBlue text-xs px-2.5 py-1 rounded-lg border border-blue-100 font-medium">昔日老街坊情懷</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右側：VR活動圖片區 -->
+            <div class="lg:col-span-5 space-y-2">
+                <div class="relative w-full h-auto bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-md aspect-[4/3] flex items-center justify-center group">
+                    <img src="images/VR.jpg" alt="VR 回憶引導活動現場" class="w-full h-full object-cover block group-hover:scale-105 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    
+                    <div class="hidden absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-slate-50 text-slate-400">
+                        <svg class="w-12 h-12 text-slate-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-center text-[11px] text-slate-500 italic">
+                    ▲ 帶領者全程隨侍在側引導長者，將 VR 畫面轉化為對香港本土地方的深層情感記憶
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section id="stats" class="py-10 bg-hkLightBlue border-b border-blue-200/60">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-1 space-y-3 text-center lg:text-left">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-hkRed">Proven Impact</h2>
+                    <p class="text-2xl font-extrabold text-slate-900">第一期服務成果展現</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        自 2025 年 10 月至 2026 年 2 月期間，第一期回憶引導員深耕基層。根據評估數據顯示，長者在 WHO-5 幸福感量表以及減少孤獨感方面，均獲得了顯著的改善。
+                    </p>
+                </div>
+                <div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl text-center border border-blue-200/60 shadow-md border-t-4 border-t-hkBlue">
+                        <p class="text-3xl font-black text-hkBlue">4,320+</p>
+                        <p class="text-[11px] font-medium text-slate-500 mt-1">總服務時數</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl text-center border border-blue-200/60 shadow-md border-t-4 border-t-hkBlue">
+                        <p class="text-3xl font-black text-hkBlue">124+</p>
+                        <p class="text-[11px] font-medium text-slate-500 mt-1">受惠長者</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl text-center border border-blue-200/60 shadow-md border-t-4 border-t-hkBlue">
+                        <p class="text-3xl font-black text-hkBlue">360</p>
+                        <p class="text-[11px] font-medium text-slate-500 mt-1">已執行服務節數</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl text-center border border-blue-200/60 shadow-md border-t-4 border-t-hkRed">
+                        <p class="text-3xl font-black text-hkRed">83.7%</p>
+                        <p class="text-[11px] font-medium text-slate-500 mt-1">長者高幸福感比例</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl text-center border border-blue-200/60 shadow-md border-t-4 border-t-hkRed">
+                        <p class="text-3xl font-black text-hkRed">81.7%</p>
+                        <p class="text-[11px] font-medium text-slate-500 mt-1">篩查無抑鬱指標比例</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl text-center border border-blue-200/60 shadow-md border-t-4 border-t-slate-600">
+                        <p class="text-3xl font-black text-slate-700">31位</p>
+                        <p class="text-[11px] font-medium text-slate-500 mt-1">完訓回憶引導員</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="quotes" class="py-10 bg-hkLightRed border-b border-red-200/60">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
+            <div class="text-center space-y-1">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Voices of Participants</h2>
+                <p class="text-2xl font-extrabold text-slate-900">來自社區的真實回響</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-l-hkRed relative border border-slate-100">
+                    <span class="absolute top-2 right-4 text-5xl text-slate-100 font-serif select-none">&ldquo;</span>
+                    <h4 class="text-[11px] font-bold text-hkRed uppercase mb-2">社區長者心聲</h4>
+                    <blockquote class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-4">
+                        「我來參加活動時似是 A4 白紙，出去了走一下，就有很多顏色的紙，好多故事、好多回憶、什麼都有，出去走一圈白紙都變彩色了，色彩豐富，美麗過彩虹。」
+                    </blockquote>
+                    <p class="text-[11px] font-semibold text-slate-400">&mdash; 參與第一期回憶引導活動之社區長者</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-l-hkBlue relative border border-slate-100">
+                    <span class="absolute top-2 right-4 text-5xl text-slate-100 font-serif select-none">&ldquo;</span>
+                    <h4 class="text-[11px] font-bold text-hkBlue uppercase mb-2">回憶引導員分享</h4>
+                    <blockquote class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-4">
+                        「在這次培訓旅程中，我最大的收穫，是學會用心傾聽與尊重長者的內心世界，也收穫了一段彼此陪伴、相互溫暖的珍貴連結。長者的人生故事，讓我體會到回憶是連繫過去與現在的重要紐帶。」
+                    </blockquote>
+                    <p class="text-[11px] font-semibold text-slate-400">&mdash; 完訓回憶引導員 (RF)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="references" class="py-6 bg-slate-50 border-b border-slate-200/60">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">學術文獻及數據來源 (References)</h3>
+            <ol class="space-y-1 text-[11px] text-slate-500 list-decimal pl-4 leading-relaxed">
+                <li id="ref-1">香港特別行政區政府統計處 (2023). 《香港人口推算 2023-2046》.</li>
+                <li id="ref-2">衛生署 (2022). 香港 60 歲或以上社區長者之健康篩查與盛行率調查.</li>
+                <li id="ref-3">Cacioppo, J. T., & Hawkley, L. C. (2009). Perceived social isolation and cognition. *Trends in Cognitive Sciences*, 13(10), 447-454.</li>
+                <li id="ref-4">Subramaniam, B., & Woods, B. (2012). Towards a theoretical model for reminiscence therapy in dementia. *Dementia*, 11(6), 755-779.</li>
+                <li id="ref-5">Woods, B., O'Philbin, L., Ryan, P., & Tobis, D. (2018). Reminiscence therapy for dementia. *Cochrane Database of Systematic Reviews*, (3).</li>
+                <li id="ref-6">嶺南大學智慧高齡與老年學團隊、新加坡社科大學 (2026). 《記憶與認知健康社區計劃（第一期）成效評估報告》.</li>
+            </ol>
+        </div>
+    </section>
+
+
+    <section id="contact" class="py-12 bg-white border-b border-slate-200">
+        <div class="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Get In Touch</h2>
+                <p class="text-2xl font-extrabold text-slate-900">歡迎向我們諮詢或聯絡</p>
+                <p class="text-xs sm:text-sm text-slate-500">無論您是以下哪種身份，我們都非常期待與您建立聯繫：</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-hkBlue"></span>有興趣合作的機構
+                    </h4>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">歡迎各區長者中心、社福單位、醫療或學術機構洽談跨界合作，共同推動認知健康社區網絡。</p>
+                </div>
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-hkRed"></span>有興趣參與培訓的長者/照顧者
+                    </h4>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">渴望學習專業非藥物介入技巧，充實退休生活或提升照護品質，並獲取跨區域證書認證。</p>
+                </div>
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-slate-600"></span>有興趣參與 VR 活動的長者
+                    </h4>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">希望免費報名體驗 12 節沉浸式虛擬實境懷舊旅程，在安全溫馨的環境中重溫往日溫暖記憶。</p>
+                </div>
+            </div>
+
+            <div class="bg-hkLightBlue rounded-2xl p-6 border border-blue-200 shadow-md grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="space-y-3 border-b md:border-b-0 md:border-r border-blue-200 pb-6 md:pb-0 md:pr-6">
+                    <h4 class="font-bold text-slate-900 text-base flex items-center gap-1.5">
+                        <span>📝 線上留下聯絡資料</span>
+                    </h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        請點擊下方按鈕填寫 Google 表格。您可以直接留下您的聯絡方向與需求，專案團隊將在收到資料後盡快與您聯絡。
+                    </p>
+                    <a href="https://forms.google.com/YOUR_FORM_ID_HERE" target="_blank" class="inline-flex items-center justify-center w-full bg-hkBlue hover:bg-blue-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition gap-2">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        填寫 Google 聯絡意向表格
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 md:pl-2">
+                    <div class="text-center sm:text-left">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">嶺南大學專案小組諮詢熱線</p>
+                        <p class="text-xl font-black text-hkRed tracking-tight">(+852) 2616 7909</p>
+                    </div>
+                    <a href="tel:+85226167909" class="w-full sm:w-auto bg-hkRed hover:bg-red-700 transition text-white text-center font-bold text-xs px-4 py-2.5 rounded-xl shadow-md whitespace-nowrap">
+                        立即撥打電話
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="bg-slate-100 text-slate-800 pt-8 pb-6 border-t border-slate-200">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-6">
+            
+            <div class="space-y-4">
+                <p class="text-[10px] font-semibold text-slate-400 text-center mb-4 tracking-widest uppercase">
+                    區域回憶中心 — 六大核心合作與支持機構 (PARTNERS)
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 items-center">
+                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
+                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkRed transition">合作機構 1</span>
+                        <span class="text-[9px] text-slate-400">240x100</span>
+                    </div>
+                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
+                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkRed transition">合作機構 2</span>
+                        <span class="text-[9px] text-slate-400">240x100</span>
+                    </div>
+                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
+                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkBlue transition">合作機構 3</span>
+                        <span class="text-[9px] text-slate-400">240x100</span>
+                    </div>
+                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
+                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkBlue transition">合作機構 4</span>
+                        <span class="text-[9px] text-slate-400">240x100</span>
+                    </div>
+                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
+                        <span class="text-xs font-bold text-slate-700 transition">合作機構 5</span>
+                        <span class="text-[9px] text-slate-400">240x100</span>
+                    </div>
+                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
+                        <span class="text-xs font-bold text-slate-700 transition">合作機構 6</span>
+                        <span class="text-[9px] text-slate-400">240x100</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-t border-slate-200 text-center text-[11px] text-slate-400">
+                <p>&copy; 2026 記憶與認知健康社區計劃. All Rights Reserved. 嶺南大學智慧高齡與老年學團隊維護.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
