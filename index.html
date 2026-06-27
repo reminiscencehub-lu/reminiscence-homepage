@@ -10,10 +10,10 @@
             theme: {
                 extend: {
                     colors: {
-                        hkRed: '#cc0000',         // 代表香港活力的經典紅
-                        hkBlue: '#0044aa',        // 代表海港與專業的精神藍
-                        hkLightBlue: '#e6f0ff',   // 明顯可見的質感淡藍底色
-                        hkLightRed: '#ffebeb'     // 明顯可見的質感淡紅底色
+                        hkRed: '#cc0000',
+                        hkBlue: '#0044aa',
+                        hkLightBlue: '#e6f0ff',   
+                        hkLightRed: '#ffebeb' 
                     }
                 }
             }
@@ -21,12 +21,12 @@
     </script>
     <style>
         html {
-            font-size: 18px; /* 初始字體整體放大一點 (標準通常為 16px) */
+            font-size: 18px; 
             scroll-behavior: smooth;
         }
     </style>
     <script>
-        let currentFontSize = 18; // 呼應初始 18px
+        let currentFontSize = 18; 
         function adjustFontSize(action) {
             if (action === 'increase' && currentFontSize < 24) {
                 currentFontSize += 1.5;
@@ -35,35 +35,42 @@
             } else if (action === 'reset') {
                 currentFontSize = 18;
             }
-            // 透過修改根節點字體大小，令全站所有 rem 單位文字等比例縮放，絕不跑版
             document.documentElement.style.fontSize = currentFontSize + 'px';
         }
     </script>
 </head>
 <body class="bg-white text-slate-800 font-sans antialiased">
 
+
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
         <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto h-16 flex items-center justify-between">
+            
+
             <div class="flex flex-col sm:flex-row sm:items-center space-y-0.5 sm:space-y-0 sm:space-x-3">
                 <span class="text-hkBlue font-bold text-base tracking-tight">記憶與認知健康社區計劃 - 嶺南大學</span>
                 <span class="hidden sm:inline text-slate-300">|</span>
-                <span class="bg-red-100 text-hkRed text-[10px] font-semibold px-2 py-0.5 rounded border border-red-200 w-max">星展基金會資助</span>
+                <span class="bg-red-50 text-hkRed text-[10px] font-semibold px-2 py-0.5 rounded border border-red-200 w-max">星展基金會資助</span>
             </div>
+            
+
             <nav class="flex items-center space-x-1 sm:space-x-3 md:space-x-4 text-xs sm:text-sm font-medium text-slate-600">
-                <a href="#context" class="hover:text-hkBlue transition px-1 py-1 text-hkRed font-bold">社會需要</a>
-                <a href="#about" class="hover:text-hkBlue transition px-1 py-1">關於計劃</a>
-                <a href="#features" class="hover:text-hkBlue transition px-1 py-1">核心板塊</a>
-                <a href="#training" class="hover:text-hkBlue transition px-1 py-1">引導員培訓</a>
-                <a href="#vr-activity" class="hover:text-hkBlue transition px-1 py-1 text-hkBlue font-bold border-b-2 border-hkBlue">VR活動</a>
-                <a href="#stats" class="hover:text-hkBlue transition px-1 py-1">服務成果</a>
-                <a href="#contact" class="hidden md:inline-block bg-hkRed text-white text-xs px-3 py-1.5 rounded-full hover:bg-red-700 transition">立即聯繫</a>
+                <a href="#context" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">社會需要</a>
+                <a href="#about" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">關於計劃</a>
+                <a href="#features" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">核心板塊</a>
+                <a href="#training" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">引導員培訓</a>
+                <a href="#vr-activity" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">VR活動</a>
+                <a href="#stats" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">服務成果</a>
+                <a href="#gallery" class="nav-link hover:text-hkBlue transition px-1 py-1 border-b-2 border-transparent">最新動態</a> 
                 
+                <a href="#contact" class="hidden md:inline-block bg-hkRed text-white text-xs px-3 py-1.5 rounded-full hover:bg-red-700 transition font-semibold shadow-sm">立即聯繫</a>
+
                 <div class="flex items-center space-x-0.5 border border-slate-200 rounded-lg p-0.5 bg-slate-50 shadow-inner ml-1 sm:ml-2">
                     <button onclick="adjustFontSize('decrease')" class="px-1.5 py-0.5 text-xs font-bold text-slate-500 hover:bg-slate-200 rounded transition" title="縮小字體">−</button>
                     <button onclick="adjustFontSize('reset')" class="px-1 py-0.5 text-[11px] font-bold text-slate-700 hover:bg-slate-200 rounded transition" title="還原大小">Aa</button>
                     <button onclick="adjustFontSize('increase')" class="px-1.5 py-0.5 text-xs font-bold text-slate-500 hover:bg-slate-200 rounded transition" title="放大字體">+</button>
                 </div>
             </nav>
+
         </div>
     </header>
 
@@ -92,7 +99,7 @@
                 </div>
             </div>
             <div class="relative w-full h-auto">
-                <img src="/images/1st_cohort_services.jpg" alt="第一期成果" class="w-full h-auto object-contain block rounded-3xl" />
+                <img src="images/1st_cohort_services.jpg" alt="第一期成果" class="w-full h-auto object-contain block rounded-3xl" />
                 <div class="absolute inset-x-0 bottom-0 flex items-end pt-12 pb-2 px-3 sm:pb-3 sm:px-4 bg-gradient-to-t from-slate-900/90 to-transparent rounded-b-3xl">
                     <p class="text-white font-medium text-xs sm:text-sm [text-shadow:_1px_1px_2px_rgba(0,0,0,0.8),_0_0_1em_rgba(0,0,0,0.5)]">
         「用心傾聽與尊重長者的內心世界」- 第一期回憶引導員社區實習活動剪影
@@ -398,7 +405,7 @@
     </section>
 
 
-<section id="vr-activity" class="py-12 bg-white border-b border-slate-100">
+<section id="vr-activity" class="py-12 bg-hkLightBlue border-b border-slate-100">
     <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
         <div class="text-center max-w-3xl mx-auto space-y-2">
             <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Immersive Reminiscence</h2>
@@ -409,31 +416,29 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <!-- 左側：活動特點介紹 -->
             <div class="lg:col-span-7 space-y-5">
                 <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-4 shadow-sm">
                     
-                    <!-- 特點一：雙重專業帶領者機制 -->
                     <div class="flex items-start gap-3">
-                        <!-- 已將「人」字替換為「引導者/專業人員」圖標 -->
                         <div class="w-8 h-8 rounded-full bg-hkBlue text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                             </svg>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-sm sm:text-base">雙重專業帶領者機制</h4>
-                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                每次活動均由<strong>嶺南大學工作人員</strong>或<strong>已受訓之專業 VR 回憶引導員</strong>進行全程陪伴與現場安全督導。帶領者不只是技術操作者，更是長者心靈故事的傾聽者與導航員。
-                            </p>
-                        </div>
+                        <div class="space-y-2">
+    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+        <span class="w-1.5 h-5 bg-hkRed rounded-full inline-block"></span>
+        安全引導與心靈導航
+    </h3>
+    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        每次活動均由嶺南大學工作人員或已受訓之專業 VR 回憶引導員進行全程陪伴。引導員不僅負責技術操作與現場安全督導，全面保障長者安全；更是長者心靈故事的傾聽者與導航員，透過溫暖的互動開啟跨越時空的心靈對話。
+    </p>
+</div>
                     </div>
 
                     <div class="border-t border-slate-200/60 my-2"></div>
 
-                    <!-- 特點二：VR 內容與香港在地情懷深度連結 -->
                     <div class="flex items-start gap-3">
-                        <!-- 已將「港」字替換為「在地足跡/地標」圖標 -->
                         <div class="w-8 h-8 rounded-full bg-hkRed text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -443,13 +448,12 @@
                         <div>
                             <h4 class="font-bold text-slate-900 text-sm sm:text-base">VR 內容與香港在地情懷深度連結</h4>
                             <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                本計劃之 VR 內容經嚴謹編排，將虛擬實境（VR）的視覺情境，精準對應至<strong>香港經典地方與本土集體回憶</strong>。在專業人員的帶領下，長者透過沉浸式場景探索，配合視覺、聽覺等精心設計的多感官刺激，有效活化大腦的長期記憶，達致認知活化之成效。
+                                本計劃之 VR 內容經嚴謹編排，將虛擬實境（VR）的視覺情境，精準對應至<strong>香港經典地方與本土集體回憶</strong>。在引導員的帶領下，長者透過沉浸式場景探索，配合視覺、聽覺等精心設計的多感官刺激，有效活化大腦的長期記憶，達致認知活化之成效。
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 標籤區 -->
                 <div class="space-y-2">
                     <p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">經典香港主題場景連結示例：</p>
                     <div class="flex flex-wrap gap-2">
@@ -462,7 +466,6 @@
                 </div>
             </div>
 
-            <!-- 右側：VR活動圖片區 -->
             <div class="lg:col-span-5 space-y-2">
                 <div class="relative w-full h-auto bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-md aspect-[4/3] flex items-center justify-center group">
                     <img src="images/VR.jpg" alt="VR 回憶引導活動現場" class="w-full h-full object-cover block group-hover:scale-105 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -482,7 +485,7 @@
 </section>
 
 
-    <section id="stats" class="py-10 bg-hkLightBlue border-b border-blue-200/60">
+    <section id="stats" class="py-10 bg-hkLightRed border-b border-blue-200/60">
         <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-10">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-1 space-y-3 text-center lg:text-left">
@@ -523,7 +526,7 @@
     </section>
 
 
-    <section id="quotes" class="py-10 bg-hkLightRed border-b border-red-200/60">
+    <section id="quotes" class="py-10 bg-white border-b border-red-200/60">
         <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
             <div class="text-center space-y-1">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Voices of Participants</h2>
@@ -552,8 +555,253 @@
         </div>
     </section>
 
+<section id="gallery" class="py-12 bg-hkLightBlue border-b border-slate-200/60 relative">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-6">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkRed">Community Footprints</h2>
+                <p class="text-2xl font-extrabold text-slate-900">最新動態與活動花絮</p>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    跟隨我們的腳步，見證走入社區的每一個溫暖瞬間。透過影像記錄，感受長者們重拾笑容的感動。
+                </p>
+            </div>
 
-    <section id="references" class="py-6 bg-slate-50 border-b border-slate-200/60">
+            <div class="relative px-2 sm:px-8">
+                
+                <button id="btn-gallery-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/95 shadow border border-slate-200 text-slate-700 hover:bg-hkBlue hover:text-white flex items-center justify-center font-bold text-xl transition focus:outline-none hidden sm:flex" aria-label="上一個">
+                    ‹
+                </button>
+                
+                <button id="btn-gallery-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/95 shadow border border-slate-200 text-slate-700 hover:bg-hkBlue hover:text-white flex items-center justify-center font-bold text-xl transition focus:outline-none hidden sm:flex" aria-label="下一個">
+                    ›
+                </button>
+
+                <div id="gallery-scroll-track" class="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 scrollbar-none scroll-smooth" style="-webkit-overflow-scrolling: touch;">
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="images/designthinkingworkshop.jpeg" alt="設計思維工作坊" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/600x338?text=Design+Thinking+Workshop';" />
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2026年6月15日</span>
+                                <span class="absolute top-2 right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">💡 專題工作坊</span>
+                            </div>
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">設計思維工作坊 — 五感懷緬工具</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">聚集第一及第二期回憶引導員與照顧者，於嶺大樂齡科技體驗館利用設計思維，共同構想具香港本土文化的五感懷緬工具原型。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-100 overflow-hidden flex items-center justify-center">
+                                <img src="https://webstatic.rthk.hk/oldassets/images/rthk/radio1/Free_as_the_wind/3173_115.jpg" 
+                                     alt="講東講西專訪" 
+                                     class="w-full h-full object-contain p-3 group-hover:scale-105 transition duration-300" 
+                                     onerror="this.src='https://placehold.co/600x338/e2e8f0/475569?text=RTHK+Gong+Dong+Gong+Sai+Interview';" />
+                                
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2026年5月26日</span>
+                                <span class="absolute top-2 right-2 bg-hkRed text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">📻 媒體專訪</span>
+                            </div>
+                            
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">港台第一台《講東講西》</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">專案團隊獲邀接受專訪，深入分享如何結合智慧高齡科技與 VR 回憶引導，回應社區長者及認知障礙症患者的需要。</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 pt-0">
+                            <a href="https://www.rthk.hk/radio/radio1/programme/Free_as_the_wind/episode/1104040" 
+                               target="_blank" 
+                               class="w-full bg-slate-100 hover:bg-hkBlue hover:text-white text-slate-700 font-semibold text-xs py-2.5 px-3 rounded-lg text-center inline-flex items-center justify-center gap-1.5 transition duration-200">
+                                🎧 線上收聽電台專訪 ➔
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/wgmwiF-iFIs" title="港台節目採訪" allowfullscreen></iframe>
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2026年3月31日</span>
+                                <span class="absolute top-2 right-2 bg-hkRed text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">📺 媒體專訪</span>
+                            </div>
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">獲邀接受香港電台電視專訪</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">團隊獲《凝聚香港》節目組邀請進行專題拍攝，實地記錄回憶引導活動，向大眾推廣智慧樂齡社區理念。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="images/2nd_cohort.jpg" alt="第二期培訓" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/600x338/e2e8f0/475569?text=2nd+Cohort+Training';" />
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2026年3月9,11日</span>
+                                <span class="absolute top-2 right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">🎓 專業培訓</span>
+                            </div>
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">第二期回憶引導員培訓課程</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">第二期課程正式順利展開，持續培育更多熱心社區志工、長者及照顧者加入專業回憶引導服務行列。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="images/VR.jpg" alt="VR活動" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/600x338/e2e8f0/475569?text=VR+Activity';" />
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2025年12月起</span>
+                                <span class="absolute top-2 right-2 bg-hkBlue text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">🥽 VR 回憶引導</span>
+                            </div>
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">VR回憶引導活動正式開展</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">透過沉浸式虛擬實境技術喚起長者的昔日生活記憶，有效激發其大腦認知能力並促進跨代對話互動。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="images/1st_cohort_services.jpg" alt="第一期服務" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/600x338/e2e8f0/475569?text=1st+Cohort+Service';" />
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2025年10月起</span>
+                                <span class="absolute top-2 right-2 bg-hkBlue text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">🤝 社區服務</span>
+                            </div>
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">第一期回憶引導員社區服務</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">首批 31 位成功結業的引導員深入全港 7 個前線服務單位，服務超過 124 位長者，讓非藥物介入真實落地。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] sm:w-[320px] shrink-0 snap-start bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300 group">
+                        <div>
+                            <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                                <img src="images/1st_cohort.png" alt="第一期課程" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/600x338/e2e8f0/475569?text=1st+Cohort+Training';" />
+                                <span class="absolute top-2 left-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-medium px-2 py-0.5 rounded shadow">2025年9月</span>
+                                <span class="absolute top-2 right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">🎓 專業培訓</span>
+                            </div>
+                            <div class="p-4 space-y-1.5">
+                                <h4 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-hkBlue transition duration-200 line-clamp-1">第一期回憶引導員培訓課程</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">第一期密集式培訓順利落幕，成功考核並建立社區首批專業回憶引導員，打下穩健的服務推展根基。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <p class="text-center text-[11px] text-slate-400 block sm:hidden">👈 手指左右滑動可查看更多活動 👉</p>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const track = document.getElementById('gallery-scroll-track');
+                const btnPrev = document.getElementById('btn-gallery-prev');
+                const btnNext = document.getElementById('btn-gallery-next');
+                
+                if(track && btnPrev && btnNext) {
+                    btnNext.addEventListener('click', () => {
+                        track.scrollBy({ left: 340, behavior: 'smooth' }); // 320卡片寬 + 20gap
+                    });
+                    btnPrev.addEventListener('click', () => {
+                        track.scrollBy({ left: -340, behavior: 'smooth' });
+                    });
+                }
+            });
+        </script>
+        
+        <style>
+            #gallery-scroll-track::-webkit-scrollbar { display: none; }
+            #gallery-scroll-track { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+    </section>
+    
+   <section id="contact" class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto space-y-10">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-hkRed">Get In Touch</h2>
+                <p class="text-2xl font-extrabold text-slate-900">聯絡我們</p>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    歡迎各安老服務機構、社區中心、長者學苑或志願人士洽談活動合作、回憶引導員培訓課程或諮詢相關專案，與我們攜手共創智慧樂齡社區。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
+                
+                <div class="bg-slate-50 rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-6 hover:shadow-md transition duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.157-5.123-3.456-6.28-6.28l1.293-.97a1.242 1.242 0 0 0 .417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                            </svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 text-base">電話與 WhatsApp 查詢</h3>
+                            <p class="text-xs text-slate-500">辦公時間：週一至週五 (9:00 AM - 5:30 PM)</p>
+                            <p class="text-lg font-extrabold text-slate-800 pt-1">2619 7909</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <a href="tel:+85226197909" class="bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs py-2.5 px-4 rounded-xl border border-slate-200 text-center inline-flex items-center justify-center gap-1.5 transition">
+                            📞 撥打電話
+                        </a>
+                        <a href="https://wa.me/85226197909" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl text-center inline-flex items-center justify-center gap-1.5 transition shadow-sm">
+                            💬 WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-6 hover:shadow-md transition duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 text-base">電子郵件</h3>
+                            <p class="text-xs text-slate-500">歡迎將合作意向書電郵至我們信箱</p>
+                            <p class="text-sm font-extrabold text-hkBlue pt-2 select-all break-all">kenchan2@ln.edu.hk</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <a href="mailto:kenchan2@ln.edu.hk" class="w-full bg-hkBlue hover:bg-sky-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl text-center inline-flex items-center justify-center gap-1.5 transition shadow-sm">
+                            ✉️ 發送郵件
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-6 hover:shadow-md transition duration-300 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1877F2] flex items-center justify-center shrink-0 border border-blue-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12z"/>
+                            </svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 text-base">Facebook 專頁</h3>
+                            <p class="text-xs text-slate-500">關注最新活動動態、精彩花絮與社區分享</p>
+                            <p class="text-sm font-extrabold text-[#1877F2] pt-2">@記憶與認知健康社區計劃</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <a href="https://www.facebook.com/profile.php?id=61590164369577" target="_blank" class="w-full bg-[#1877F2] hover:bg-[#166FE5] text-white font-semibold text-xs py-2.5 px-4 rounded-xl text-center inline-flex items-center justify-center gap-1.5 transition shadow-sm">
+                            🌐 瀏覽專頁
+                        </a>
+                    </div>
+                </div>
+
+            </div>            
+        </div>
+    </section>
+    
+     <section id="references" class="py-6 bg-slate-50 border-b border-slate-200/60">
         <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
             <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">學術文獻及數據來源 (References)</h3>
             <ol class="space-y-1 text-[11px] text-slate-500 list-decimal pl-4 leading-relaxed">
@@ -562,109 +810,95 @@
                 <li id="ref-3">Cacioppo, J. T., & Hawkley, L. C. (2009). Perceived social isolation and cognition. *Trends in Cognitive Sciences*, 13(10), 447-454.</li>
                 <li id="ref-4">Subramaniam, B., & Woods, B. (2012). Towards a theoretical model for reminiscence therapy in dementia. *Dementia*, 11(6), 755-779.</li>
                 <li id="ref-5">Woods, B., O'Philbin, L., Ryan, P., & Tobis, D. (2018). Reminiscence therapy for dementia. *Cochrane Database of Systematic Reviews*, (3).</li>
-                <li id="ref-6">嶺南大學智慧高齡與老年學團隊、新加坡社科大學 (2026). 《記憶與認知健康社區計劃（第一期）成效評估報告》.</li>
+                <li id="ref-6">嶺南大學、新加坡社科大學 (2026). 《記憶與認知健康社區計劃（第一期）成效評估報告》.</li>
             </ol>
         </div>
     </section>
-
-
-    <section id="contact" class="py-12 bg-white border-b border-slate-200">
-        <div class="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
-            <div class="text-center max-w-2xl mx-auto space-y-2">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-hkBlue">Get In Touch</h2>
-                <p class="text-2xl font-extrabold text-slate-900">歡迎向我們諮詢或聯絡</p>
-                <p class="text-xs sm:text-sm text-slate-500">無論您是以下哪種身份，我們都非常期待與您建立聯繫：</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-hkBlue"></span>有興趣合作的機構
-                    </h4>
-                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">歡迎各區長者中心、社福單位、醫療或學術機構洽談跨界合作，共同推動認知健康社區網絡。</p>
-                </div>
-                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-hkRed"></span>有興趣參與培訓的長者/照顧者
-                    </h4>
-                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">渴望學習專業非藥物介入技巧，充實退休生活或提升照護品質，並獲取跨區域證書認證。</p>
-                </div>
-                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-slate-600"></span>有興趣參與 VR 活動的長者
-                    </h4>
-                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">希望免費報名體驗 12 節沉浸式虛擬實境懷舊旅程，在安全溫馨的環境中重溫往日溫暖記憶。</p>
-                </div>
-            </div>
-
-            <div class="bg-hkLightBlue rounded-2xl p-6 border border-blue-200 shadow-md grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                <div class="space-y-3 border-b md:border-b-0 md:border-r border-blue-200 pb-6 md:pb-0 md:pr-6">
-                    <h4 class="font-bold text-slate-900 text-base flex items-center gap-1.5">
-                        <span>📝 線上留下聯絡資料</span>
-                    </h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        請點擊下方按鈕填寫 Google 表格。您可以直接留下您的聯絡方向與需求，專案團隊將在收到資料後盡快與您聯絡。
-                    </p>
-                    <a href="https://forms.google.com/YOUR_FORM_ID_HERE" target="_blank" class="inline-flex items-center justify-center w-full bg-hkBlue hover:bg-blue-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition gap-2">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        填寫 Google 聯絡意向表格
-                    </a>
-                </div>
-
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 md:pl-2">
-                    <div class="text-center sm:text-left">
-                        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">嶺南大學專案小組諮詢熱線</p>
-                        <p class="text-xl font-black text-hkRed tracking-tight">(+852) 2616 7909</p>
-                    </div>
-                    <a href="tel:+85226167909" class="w-full sm:w-auto bg-hkRed hover:bg-red-700 transition text-white text-center font-bold text-xs px-4 py-2.5 rounded-xl shadow-md whitespace-nowrap">
-                        立即撥打電話
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+    
     <footer class="bg-slate-100 text-slate-800 pt-8 pb-6 border-t border-slate-200">
-        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-6">
+    <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto space-y-6">
+        
+        <div class="space-y-4">
+            <p class="text-[10px] font-semibold text-slate-400 text-center mb-4 tracking-widest uppercase">
+                區域回憶中心 — 六大核心合作與支持機構 (PARTNERS)
+            </p>
             
-            <div class="space-y-4">
-                <p class="text-[10px] font-semibold text-slate-400 text-center mb-4 tracking-widest uppercase">
-                    區域回憶中心 — 六大核心合作與支持機構 (PARTNERS)
-                </p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 items-center">
-                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
-                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkRed transition">合作機構 1</span>
-                        <span class="text-[9px] text-slate-400">240x100</span>
-                    </div>
-                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
-                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkRed transition">合作機構 2</span>
-                        <span class="text-[9px] text-slate-400">240x100</span>
-                    </div>
-                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
-                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkBlue transition">合作機構 3</span>
-                        <span class="text-[9px] text-slate-400">240x100</span>
-                    </div>
-                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
-                        <span class="text-xs font-bold text-slate-700 group-hover:text-hkBlue transition">合作機構 4</span>
-                        <span class="text-[9px] text-slate-400">240x100</span>
-                    </div>
-                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
-                        <span class="text-xs font-bold text-slate-700 transition">合作機構 5</span>
-                        <span class="text-[9px] text-slate-400">240x100</span>
-                    </div>
-                    <div class="w-full h-14 bg-white rounded-xl flex flex-col items-center justify-center border border-slate-200 p-2 text-center hover:bg-slate-50 hover:border-slate-300 transition group shadow-sm">
-                        <span class="text-xs font-bold text-slate-700 transition">合作機構 6</span>
-                        <span class="text-[9px] text-slate-400">240x100</span>
-                    </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 items-center">
+                
+                <div class="w-full h-16 bg-white rounded-xl flex items-center justify-center border border-slate-200 p-3 hover:bg-slate-50 hover:border-slate-300 transition shadow-sm group">
+                    <img src="images/logo_lingnan.jpg" alt="嶺南大學" class="max-w-full max-h-full object-contain transition group-hover:scale-105 duration-200">
                 </div>
-            </div>
-            
-            <div class="mt-4 pt-4 border-t border-slate-200 text-center text-[11px] text-slate-400">
-                <p>&copy; 2026 記憶與認知健康社區計劃. All Rights Reserved. 嶺南大學智慧高齡與老年學團隊維護.</p>
+                
+                <div class="w-full h-16 bg-white rounded-xl flex items-center justify-center border border-slate-200 p-3 hover:bg-slate-50 hover:border-slate-300 transition shadow-sm group">
+                    <img src="images/Logo_SUSS.png" alt="新加坡社科大學" class="max-w-full max-h-full object-contain transition group-hover:scale-105 duration-200">
+                </div>
+                
+                <div class="w-full h-16 bg-white rounded-xl flex items-center justify-center border border-slate-200 p-3 hover:bg-slate-50 hover:border-slate-300 transition shadow-sm group">
+                    <img src="images/logo_tmu.jpg" alt="臺北醫學大學" class="max-w-full max-h-full object-contain transition group-hover:scale-105 duration-200">
+                </div>
+                
+                <div class="w-full h-16 bg-white rounded-xl flex items-center justify-center border border-slate-200 p-3 hover:bg-slate-50 hover:border-slate-300 transition shadow-sm group">
+                    <img src="images/logo_pria.jpg" alt="PRIA" class="max-w-full max-h-full object-contain transition group-hover:scale-105 duration-200">
+                </div>
+                
+                <div class="w-full h-16 bg-white rounded-xl flex items-center justify-center border border-slate-200 p-3 hover:bg-slate-50 hover:border-slate-300 transition shadow-sm group">
+                    <img src="images/logo_ruc.png" alt="RUC" class="max-w-full max-h-full object-contain transition group-hover:scale-105 duration-200">
+                </div>
+                
+                <div class="w-full h-16 bg-white rounded-xl flex items-center justify-center border border-slate-200 p-3 hover:bg-slate-50 hover:border-slate-300 transition shadow-sm group">
+                    <img src="images/logo_uaj.png" alt="UAJ" class="max-w-full max-h-full object-contain transition group-hover:scale-105 duration-200">
+                </div>
+
             </div>
         </div>
-    </footer>
+        
+        <div class="mt-4 pt-4 border-t border-slate-200 text-center text-[11px] text-slate-400">
+            <p>&copy; 2026 記憶與認知健康社區計劃. All Rights Reserved. 嶺南大學.</p>
+        </div>
+    </div>
+</footer>
 
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    const sections = [];
+    navLinks.forEach(link => {
+        const targetId = link.getAttribute('href');
+        const section = document.querySelector(targetId);
+        if (section) sections.push(section);
+    });
+
+    const activeClasses = ['text-hkBlue', 'font-bold', 'border-hkBlue'];
+    const inactiveClasses = ['text-slate-600', 'border-transparent'];
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -75% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentId = entry.target.getAttribute('id');
+                
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add(...activeClasses);
+                        link.classList.remove(...inactiveClasses);
+                    } else {
+                        link.classList.remove(...activeClasses);
+                        link.classList.add(...inactiveClasses);
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+});
+</script>
+    
 </body>
 </html>
